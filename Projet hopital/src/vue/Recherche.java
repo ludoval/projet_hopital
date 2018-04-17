@@ -1,5 +1,5 @@
 package vue;
-
+import Controleur.Connexion;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,12 +11,14 @@ package vue;
  * @author axel9
  */
 public class Recherche extends javax.swing.JFrame {
-
+    private static Connexion con;
     /**
      * Creates new form Recherche
+     * @param l login 
      */
-    public Recherche() {
+    public Recherche(Connexion l) {
         initComponents();
+        con=l;
     }
 
     /**
@@ -92,19 +94,21 @@ public class Recherche extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetourActionPerformed
-        Acceuil Page_acceuil=new Acceuil();
+        Accueil Page_acceuil=new Accueil(con);
         Page_acceuil.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_RetourActionPerformed
 
     private void PatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientsActionPerformed
-        Rch_Patients P=new Rch_Patients();
+        Rch_Patients P=new Rch_Patients(con);
         P.setVisible(true);
+        //ajout de la requete "racine"
+        con.ajouterRequete("");
         this.setVisible(false);
     }//GEN-LAST:event_PatientsActionPerformed
 
     private void PersonnelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonnelsActionPerformed
-        Rch_Personnels Per=new Rch_Personnels();
+        Rch_Personnels Per=new Rch_Personnels(con);
         Per.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_PersonnelsActionPerformed
@@ -139,7 +143,7 @@ public class Recherche extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Recherche().setVisible(true);
+                new Recherche(con).setVisible(true);
             }
         });
     }

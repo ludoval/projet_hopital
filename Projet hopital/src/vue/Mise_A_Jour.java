@@ -1,5 +1,5 @@
 package vue;
-
+import Controleur.Connexion;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,12 +11,14 @@ package vue;
  * @author axel9
  */
 public class Mise_A_Jour extends javax.swing.JFrame {
-
+    private static Connexion con;
     /**
      * Creates new form Mise_A_Jour
      */
-    public Mise_A_Jour() {
+    public Mise_A_Jour(Connexion c) {
         initComponents();
+        con=c;
+        
     }
 
     /**
@@ -60,7 +62,7 @@ public class Mise_A_Jour extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetourActionPerformed
-        Acceuil Page_acceuil=new Acceuil();
+        Accueil Page_acceuil=new Accueil(con);
         Page_acceuil.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_RetourActionPerformed
@@ -95,7 +97,7 @@ public class Mise_A_Jour extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mise_A_Jour().setVisible(true);
+                new Mise_A_Jour(con).setVisible(true);
             }
         });
     }

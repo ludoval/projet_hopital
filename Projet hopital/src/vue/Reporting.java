@@ -4,18 +4,20 @@
  * and open the template in the editor.
  */
 package vue;
-
+import Controleur.Connexion;
 /**
  *
  * @author axel9
  */
 public class Reporting extends javax.swing.JFrame {
-
+    private static Connexion con;
     /**
      * Creates new form Reporting
+     * @param c
      */
-    public Reporting() {
+    public Reporting(Connexion c) {
         initComponents();
+        con=c;
     }
 
     /**
@@ -59,8 +61,8 @@ public class Reporting extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetourActionPerformed
-       Acceuil Page_acceuil=new Acceuil();
-       Page_acceuil.setVisible(true);
+       Accueil Page_accueil=new Accueil(con);
+       Page_accueil.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_RetourActionPerformed
 
@@ -94,7 +96,7 @@ public class Reporting extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Reporting().setVisible(true);
+                new Reporting(con).setVisible(true);
             }
         });
     }

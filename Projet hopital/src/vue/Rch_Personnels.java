@@ -4,18 +4,19 @@
  * and open the template in the editor.
  */
 package vue;
-
+import Controleur.Connexion;
 /**
  *
  * @author axel9
  */
 public class Rch_Personnels extends javax.swing.JFrame {
-
+    private static Connexion con;
     /**
      * Creates new form Rch_Personnels
      */
-    public Rch_Personnels() {
+    public Rch_Personnels(Connexion c) {
         initComponents();
+        con=c;
     }
 
     /**
@@ -59,7 +60,7 @@ public class Rch_Personnels extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetourActionPerformed
-        Recherche Page_recherche= new Recherche();
+        Recherche Page_recherche= new Recherche(con);
         Page_recherche.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_RetourActionPerformed
@@ -94,7 +95,7 @@ public class Rch_Personnels extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Rch_Personnels().setVisible(true);
+                new Rch_Personnels(con).setVisible(true);
             }
         });
     }

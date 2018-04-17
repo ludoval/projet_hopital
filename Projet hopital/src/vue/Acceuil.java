@@ -102,15 +102,21 @@ public class Acceuil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechercheActionPerformed
-        // TODO add your handling code here:
+        Recherche Page_recherche= new Recherche();
+        Page_recherche.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_RechercheActionPerformed
 
     private void Mise_a_jourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mise_a_jourActionPerformed
-        // TODO add your handling code here:
+        Mise_A_Jour Page_MAJ= new Mise_A_Jour();
+        Page_MAJ.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_Mise_a_jourActionPerformed
 
     private void ReportingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportingActionPerformed
-        // TODO add your handling code here:
+        Reporting Page_Reporting= new Reporting();
+        Page_Reporting.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_ReportingActionPerformed
 
     /**

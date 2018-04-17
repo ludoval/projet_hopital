@@ -1,21 +1,20 @@
-package vue;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package vue;
 
 /**
  *
  * @author axel9
  */
-public class Mise_A_Jour extends javax.swing.JFrame {
+public class Reporting extends javax.swing.JFrame {
 
     /**
-     * Creates new form Mise_A_Jour
+     * Creates new form Reporting
      */
-    public Mise_A_Jour() {
+    public Reporting() {
         initComponents();
     }
 
@@ -60,9 +59,9 @@ public class Mise_A_Jour extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetourActionPerformed
-        Acceuil Page_acceuil=new Acceuil();
-        Page_acceuil.setVisible(true);
-        this.setVisible(false);
+       Acceuil Page_acceuil=new Acceuil();
+       Page_acceuil.setVisible(true);
+       this.setVisible(false);
     }//GEN-LAST:event_RetourActionPerformed
 
     /**
@@ -82,20 +81,20 @@ public class Mise_A_Jour extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Mise_A_Jour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Mise_A_Jour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Mise_A_Jour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Mise_A_Jour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mise_A_Jour().setVisible(true);
+                new Reporting().setVisible(true);
             }
         });
     }

@@ -10,12 +10,12 @@ package vue;
  *
  * @author axel9
  */
-public class Mise_A_Jour extends javax.swing.JFrame {
+public class Recherche extends javax.swing.JFrame {
 
     /**
-     * Creates new form Mise_A_Jour
+     * Creates new form Recherche
      */
-    public Mise_A_Jour() {
+    public Recherche() {
         initComponents();
     }
 
@@ -29,6 +29,8 @@ public class Mise_A_Jour extends javax.swing.JFrame {
     private void initComponents() {
 
         Retour = new javax.swing.JButton();
+        Personnels = new javax.swing.JButton();
+        Patients = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,6 +41,20 @@ public class Mise_A_Jour extends javax.swing.JFrame {
             }
         });
 
+        Personnels.setText("Personnels");
+        Personnels.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PersonnelsActionPerformed(evt);
+            }
+        });
+
+        Patients.setText("Patients");
+        Patients.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PatientsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -46,14 +62,30 @@ public class Mise_A_Jour extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Retour)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(224, Short.MAX_VALUE)
+                .addComponent(Personnels, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(86, 86, 86)
+                    .addComponent(Patients, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(210, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Retour)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addGap(95, 95, 95)
+                .addComponent(Personnels, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(124, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(130, Short.MAX_VALUE)
+                    .addComponent(Patients, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(123, 123, 123)))
         );
 
         pack();
@@ -64,6 +96,18 @@ public class Mise_A_Jour extends javax.swing.JFrame {
         Page_acceuil.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_RetourActionPerformed
+
+    private void PatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientsActionPerformed
+        Rch_Patients P=new Rch_Patients();
+        P.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_PatientsActionPerformed
+
+    private void PersonnelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonnelsActionPerformed
+        Rch_Personnels Per=new Rch_Personnels();
+        Per.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_PersonnelsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -82,25 +126,27 @@ public class Mise_A_Jour extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Mise_A_Jour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Recherche.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Mise_A_Jour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Recherche.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Mise_A_Jour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Recherche.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Mise_A_Jour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Recherche.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mise_A_Jour().setVisible(true);
+                new Recherche().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Patients;
+    private javax.swing.JButton Personnels;
     private javax.swing.JButton Retour;
     // End of variables declaration//GEN-END:variables
 }

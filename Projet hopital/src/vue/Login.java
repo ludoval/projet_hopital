@@ -130,8 +130,8 @@ public class Login extends javax.swing.JFrame {
                     // tentative de connexion si les 4 attributs sont remplis
                     maconnexion = new Connexion("hopital", Login_Text.getText(),Password_Text.getText());
                     JOptionPane.showMessageDialog(null, "Connexion réeussie");
-                    Recherche R=new Recherche();
-                    R.setVisible(true);
+                    Acceuil Page_acceuil=new Acceuil();
+                    Page_acceuil.setVisible(true);
                     this.setVisible(false);
                 } catch (ClassNotFoundException cnfe) {
                     System.out.println("Connexion echouee : probleme de classe");
@@ -139,6 +139,8 @@ public class Login extends javax.swing.JFrame {
                 }
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Connexion echouée");
+                Login_Text.setText("");
+                Password_Text.setText("");
                 this.setVisible(true);
                 System.out.println("Connexion echouee : probleme SQL");
                 e.printStackTrace();

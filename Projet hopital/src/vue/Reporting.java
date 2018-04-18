@@ -10,14 +10,13 @@ import Controleur.Connexion;
  * @author axel9
  */
 public class Reporting extends javax.swing.JFrame {
-    private static Connexion con;
+    private static Connexion link;
     /**
      * Creates new form Reporting
-     * @param c
      */
-    public Reporting(Connexion c) {
+    public Reporting(Connexion l) {
         initComponents();
-        con=c;
+        link=l;
     }
 
     /**
@@ -61,8 +60,8 @@ public class Reporting extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetourActionPerformed
-       Accueil Page_accueil=new Accueil(con);
-       Page_accueil.setVisible(true);
+       Accueil Page_acceuil=new Accueil(link);
+       Page_acceuil.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_RetourActionPerformed
 
@@ -96,7 +95,7 @@ public class Reporting extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Reporting(con).setVisible(true);
+                new Reporting(link).setVisible(true);
             }
         });
     }

@@ -130,12 +130,8 @@ public class Login extends javax.swing.JFrame {
                     // tentative de connexion si les 4 attributs sont remplis
                     maconnexion = new Connexion("hopital", Login_Text.getText(),Password_Text.getText());
                     JOptionPane.showMessageDialog(null, "Connexion réeussie");
-                    Accueil Page_acceuil=new Accueil(maconnexion);
-                    //test requête
-                    maconnexion.ajouterRequete("SELECT*FROM docteur");
-                    maconnexion.requetes=maconnexion.remplirChampsRequete("SELECT * FROM docteur");
-                    for(int i=0;i<maconnexion.requetes.size();i++)System.out.println(maconnexion.requetes.get(i));
-                    Page_acceuil.setVisible(true);
+                    Accueil Page_accueil=new Accueil(maconnexion);
+                    Page_accueil.setVisible(true);
                     this.setVisible(false);
                 } catch (ClassNotFoundException cnfe) {
                     System.out.println("Connexion echouee : probleme de classe");
@@ -151,5 +147,4 @@ public class Login extends javax.swing.JFrame {
             }
     }                                              
 }
-    public Connexion getConnexion(){return maconnexion;}
 }

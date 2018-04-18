@@ -11,14 +11,13 @@ import Controleur.Connexion;
  * @author axel9
  */
 public class Mise_A_Jour extends javax.swing.JFrame {
-    private static Connexion con;
+    private static Connexion link;
     /**
      * Creates new form Mise_A_Jour
      */
-    public Mise_A_Jour(Connexion c) {
+    public Mise_A_Jour(Connexion l) {
         initComponents();
-        con=c;
-        
+        link=l;
     }
 
     /**
@@ -62,8 +61,8 @@ public class Mise_A_Jour extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetourActionPerformed
-        Accueil Page_acceuil=new Accueil(con);
-        Page_acceuil.setVisible(true);
+        Accueil Page_accueil=new Accueil(link);
+        Page_accueil.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_RetourActionPerformed
 
@@ -97,7 +96,7 @@ public class Mise_A_Jour extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mise_A_Jour(con).setVisible(true);
+                new Mise_A_Jour(link).setVisible(true);
             }
         });
     }

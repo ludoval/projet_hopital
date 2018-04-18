@@ -1,6 +1,5 @@
 package vue;
 import Controleur.Connexion;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,14 +11,13 @@ import Controleur.Connexion;
  * @author axel9
  */
 public class Accueil extends javax.swing.JFrame {
-    private static Connexion con;
+    private static Connexion link;
     /**
      * Creates new form Acceuil
-     * @param c ceci est un énorme tube
      */
-    public Accueil(Connexion c) {
+    public Accueil(Connexion l) {
         initComponents();
-        con=c;
+        link=l;
     }
 
     /**
@@ -69,56 +67,56 @@ public class Accueil extends javax.swing.JFrame {
         });
 
         Acceuil.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        Acceuil.setText("Accueil");
+        Acceuil.setText("Acceuil");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(447, 447, 447)
+                .addComponent(Acceuil)
+                .addContainerGap(458, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addComponent(Acceuil))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Reporting, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Mise_a_jour, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(150, Short.MAX_VALUE))
+                    .addComponent(Reporting, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(Recherche, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Mise_a_jour, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(64, 64, 64)
                 .addComponent(Acceuil)
-                .addGap(30, 30, 30)
+                .addGap(63, 63, 63)
                 .addComponent(Recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(50, 50, 50)
                 .addComponent(Mise_a_jour, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(50, 50, 50)
                 .addComponent(Reporting, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void RechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechercheActionPerformed
-        Recherche Page_recherche= new Recherche(con);
+        Recherche Page_recherche= new Recherche(link);
         Page_recherche.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_RechercheActionPerformed
 
     private void Mise_a_jourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mise_a_jourActionPerformed
-        Mise_A_Jour Page_MAJ= new Mise_A_Jour(con);
+        Mise_A_Jour Page_MAJ= new Mise_A_Jour(link);
         Page_MAJ.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_Mise_a_jourActionPerformed
 
     private void ReportingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportingActionPerformed
-        Reporting Page_Reporting= new Reporting(con);
+        Reporting Page_Reporting= new Reporting(link);
         Page_Reporting.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_ReportingActionPerformed
@@ -153,7 +151,7 @@ public class Accueil extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Accueil(con).setVisible(true);
+                new Accueil(link).setVisible(true);
             }
         });
     }

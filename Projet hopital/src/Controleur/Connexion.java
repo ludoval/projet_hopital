@@ -131,7 +131,7 @@ public class Connexion {
      * @return
      * @throws java.sql.SQLException
      */
-     public ArrayList remplirChampsTable(String table) throws SQLException {
+    public ArrayList remplirChampsTable(String table) throws SQLException {
         // récupération de l'ordre de la requete
         rset = stmt.executeQuery("select * from " + table);
 

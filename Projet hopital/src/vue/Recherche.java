@@ -11,14 +11,13 @@ import Controleur.Connexion;
  * @author axel9
  */
 public class Recherche extends javax.swing.JFrame {
-    private static Connexion con;
+    private static Connexion link;
     /**
      * Creates new form Recherche
-     * @param l login 
      */
     public Recherche(Connexion l) {
         initComponents();
-        con=l;
+        link=l;
     }
 
     /**
@@ -94,21 +93,19 @@ public class Recherche extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetourActionPerformed
-        Accueil Page_acceuil=new Accueil(con);
+        Accueil Page_acceuil=new Accueil(link);
         Page_acceuil.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_RetourActionPerformed
 
     private void PatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientsActionPerformed
-        Rch_Patients P=new Rch_Patients(con);
+        Rch_Patients P=new Rch_Patients(link);
         P.setVisible(true);
-        //ajout de la requete "racine"
-        con.ajouterRequete("");
         this.setVisible(false);
     }//GEN-LAST:event_PatientsActionPerformed
 
     private void PersonnelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonnelsActionPerformed
-        Rch_Personnels Per=new Rch_Personnels(con);
+        Rch_Personnels Per=new Rch_Personnels(link);
         Per.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_PersonnelsActionPerformed
@@ -143,7 +140,7 @@ public class Recherche extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Recherche(con).setVisible(true);
+                new Recherche(link).setVisible(true);
             }
         });
     }

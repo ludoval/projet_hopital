@@ -18,7 +18,7 @@ public abstract class Employe{
     protected String adresse;
     
     //Constructeur
-    public Employe(String numero,String nom,String prenom,String tel,String adresse){
+    public Employe(String numero,String nom,String prenom,String adresse,String tel){
         this.numero=numero;
         this.nom=nom;
         this.prenom=prenom;

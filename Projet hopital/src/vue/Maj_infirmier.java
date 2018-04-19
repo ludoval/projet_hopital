@@ -64,8 +64,8 @@ public class Maj_infirmier extends javax.swing.JFrame {
            row[0] = list.get(i).getnumero();
            row[1] = list.get(i).getnom();
            row[2] = list.get(i).getprenom();
-           row[3] = list.get(i).gettel();
-           row[4] = list.get(i).getadresse();
+           row[3] = list.get(i).getadresse();
+           row[4] = list.get(i).gettel();
            row[5] = list.get(i).getcode_service();
            row[6] = list.get(i).getRotation();
            row[7] = list.get(i).getSalaire();

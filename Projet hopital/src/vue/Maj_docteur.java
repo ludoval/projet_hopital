@@ -60,8 +60,8 @@ public class Maj_docteur extends javax.swing.JFrame {
            row[0] = list.get(i).getnumero();
            row[1] = list.get(i).getnom();
            row[2] = list.get(i).getprenom();
-           row[4] = list.get(i).getadresse();
-           row[3] = list.get(i).gettel();
+           row[3] = list.get(i).getadresse();
+           row[4] = list.get(i).gettel();
            row[5] = list.get(i).getspecialite();
            
            model.addRow(row);

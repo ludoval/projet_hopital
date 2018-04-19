@@ -30,13 +30,32 @@ public class Mise_A_Jour extends javax.swing.JFrame {
     private void initComponents() {
 
         Retour = new javax.swing.JButton();
+        MAJ_patient = new javax.swing.JButton();
+        MAJ_employe = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Retour.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         Retour.setText("Retour");
         Retour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RetourActionPerformed(evt);
+            }
+        });
+
+        MAJ_patient.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        MAJ_patient.setText("MAJ Patient");
+        MAJ_patient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MAJ_patientActionPerformed(evt);
+            }
+        });
+
+        MAJ_employe.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        MAJ_employe.setText("MAJ Employe");
+        MAJ_employe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MAJ_employeActionPerformed(evt);
             }
         });
 
@@ -45,16 +64,27 @@ public class Mise_A_Jour extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Retour)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Retour))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(MAJ_patient)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(MAJ_employe)))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Retour)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addGap(97, 97, 97)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MAJ_patient, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MAJ_employe, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         pack();
@@ -65,6 +95,19 @@ public class Mise_A_Jour extends javax.swing.JFrame {
         Page_accueil.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_RetourActionPerformed
+
+    private void MAJ_patientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MAJ_patientActionPerformed
+        Rch_Patients P=new Rch_Patients(link);
+        P.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_MAJ_patientActionPerformed
+
+    private void MAJ_employeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MAJ_employeActionPerformed
+        // TODO add your handling code here:
+        Maj_Employe maj_employe=new  Maj_Employe(link);
+        maj_employe.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_MAJ_employeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -102,6 +145,8 @@ public class Mise_A_Jour extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton MAJ_employe;
+    private javax.swing.JButton MAJ_patient;
     private javax.swing.JButton Retour;
     // End of variables declaration//GEN-END:variables
 }

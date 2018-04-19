@@ -62,6 +62,9 @@ public class Connexion {
         // création d'un ordre SQL (statement)
         stmt = conn.createStatement();
     }
+    public Connection getConn(){
+        return conn;
+    }
 
     /**
      * Constructeur avec 4 paramètres : username et password ECE, login et

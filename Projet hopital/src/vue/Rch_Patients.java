@@ -6,6 +6,8 @@
 
 package vue;
 import Controleur.Connexion;
+import java.sql.*;
+import vue.Recherche;
 /**
  *
  * @author axel9
@@ -16,6 +18,7 @@ public class Rch_Patients extends javax.swing.JFrame {
     public Rch_Patients(Connexion l) {
         initComponents();
         link=l;
+ 
     }
 
     /** This method is called from within the constructor to
@@ -28,13 +31,13 @@ public class Rch_Patients extends javax.swing.JFrame {
     private void initComponents() {
 
         Retour = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        zone_resultat = new javax.swing.JTextArea();
         Texte_recherche = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         Categorie = new javax.swing.JComboBox<>();
         Attribut = new javax.swing.JComboBox<>();
         Recherche = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,10 +47,6 @@ public class Rch_Patients extends javax.swing.JFrame {
                 RetourActionPerformed(evt);
             }
         });
-
-        zone_resultat.setColumns(20);
-        zone_resultat.setRows(5);
-        jScrollPane1.setViewportView(zone_resultat);
 
         Texte_recherche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +63,7 @@ public class Rch_Patients extends javax.swing.JFrame {
             }
         });
 
-        Attribut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "numero", "nom", "prenom", "adresse", "tel", "mutuelle", "no_doc", "nom_doc", "prenom_doc", "tel_doc", "specialite", "no_chambre", "service", "batiment" }));
+        Attribut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "aucun", "numero", "nom", "prenom", "adresse", "tel", "mutuelle", "no_doc", "nom_doc", "prenom_doc", "tel_doc", "specialite" }));
 
         Recherche.setText("Recherche");
         Recherche.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +72,19 @@ public class Rch_Patients extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "numero", "nom", "prenom", "adresse", "tel", "mutuelle", "no_doc", "nom_doc", "prenom_doc", "tel_doc", "specialite"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,7 +92,7 @@ public class Rch_Patients extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Retour)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 728, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Categorie, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -91,10 +103,10 @@ public class Rch_Patients extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 938, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,9 +120,9 @@ public class Rch_Patients extends javax.swing.JFrame {
                         .addComponent(Categorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Attribut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Recherche)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -127,11 +139,158 @@ public class Rch_Patients extends javax.swing.JFrame {
     }//GEN-LAST:event_Texte_rechercheActionPerformed
 
     private void CategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategorieActionPerformed
-        // TODO add your handling code here:
+        if(Categorie.getSelectedIndex()==0){
+            if(Attribut.getItemCount()>12){
+               Attribut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "aucun", "numero", "nom", "prenom", "adresse", "tel", "mutuelle", "no_doc", "nom_doc", "prenom_doc", "tel_doc", "specialite" }));
+               Attribut.addItem("no_chambre");
+               Attribut.addItem("service");
+               jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null,null,null},
+                {null, null, null, null, null, null, null, null, null, null, null,null,null},
+                {null, null, null, null, null, null, null, null, null, null, null,null,null},
+                {null, null, null, null, null, null, null, null, null, null, null,null,null}
+            },
+            new String [] {
+                "numero", "nom", "prenom", "adresse", "tel", "mutuelle", "no_doc", "nom_doc", "prenom_doc", "tel_doc", "specialite","no_chambre","service"
+            }
+        ));
+            }
+            else{
+                 Attribut.addItem("no_chambre");
+                 Attribut.addItem("service");
+                 jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null,null,null},
+                {null, null, null, null, null, null, null, null, null, null, null,null,null},
+                {null, null, null, null, null, null, null, null, null, null, null,null,null},
+                {null, null, null, null, null, null, null, null, null, null, null,null,null}
+            },
+            new String [] {
+                "numero", "nom", "prenom", "adresse", "tel", "mutuelle", "no_doc", "nom_doc", "prenom_doc", "tel_doc", "specialite","no_chambre","service"
+            }
+        ));
+            }      
+        }
+        if(Categorie.getSelectedIndex()==1){
+            Attribut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "aucun", "numero", "nom", "prenom", "adresse", "tel", "mutuelle", "no_doc", "nom_doc", "prenom_doc", "tel_doc", "specialite" }));
+            jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "numero", "nom", "prenom", "adresse", "tel", "mutuelle", "no_doc", "nom_doc", "prenom_doc", "tel_doc", "specialite"
+            }
+        ));
+        }
     }//GEN-LAST:event_CategorieActionPerformed
 
     private void RechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechercheActionPerformed
-        // TODO add your handling code here:
+        String SQL_P_H="SELECT DISTINCT M.numero, M.nom, M.prenom,M.adresse, M.tel,M.mutuelle, H.no_chambre, SV.nom as service ,E.numero as no_doc, E.nom as nom_doc, E.prenom as prenom_doc, E.tel as tel_doc, D.specialite FROM malade M,hospitalisation H,service SV, soigne S, docteur D, employe E WHERE M.numero=H.no_malade AND H.no_malade=S.no_malade AND S.no_docteur=D.numero AND D.numero=E.numero ";
+        String SQL_P="SELECT DISTINCT M.numero, M.nom, M.prenom,M.adresse, M.tel,M.mutuelle,E.numero as no_doc, E.nom as nom_doc, E.prenom as prenom_doc, E.tel as tel_doc, D.specialite FROM malade M,service SV, soigne S, docteur D, employe E WHERE M.numero=S.no_malade AND S.no_docteur=D.numero AND D.numero=E.numero ";
+
+        int C;
+        C=Categorie.getSelectedIndex();
+        int No_A;
+        String SQL;
+        switch(C){
+    
+                 case 0: 
+                    No_A=Attribut.getSelectedIndex();
+                     switch(No_A){
+                    case 0:
+                        SQL=SQL_P_H;
+                        break;
+                    case 1:
+                        SQL=SQL_P_H+"WHERE numero like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 2:
+                        SQL=SQL_P_H+"WHERE nom like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 3:
+                        SQL=SQL_P_H+"WHERE prenom like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 4:
+                        SQL=SQL_P_H+"WHERE adresse like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 5:
+                        SQL=SQL_P_H+"WHERE tel like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 6:
+                        SQL=SQL_P_H+"WHERE mutuelle like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 7:
+                        SQL=SQL_P_H+"WHERE no_doc like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 8:
+                        SQL=SQL_P_H+"WHERE nom_doc like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 9:
+                        SQL=SQL_P_H+"WHERE prenom_doc like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 10:
+                        SQL=SQL_P_H+"WHERE tel_doc like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 11:
+                        SQL=SQL_P_H+"WHERE specialite like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 12:
+                        SQL=SQL_P_H+"WHERE no_chambre like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 13:
+                        SQL=SQL_P_H+"WHERE service like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    }
+                    break;
+            case 1: 
+                No_A=Attribut.getSelectedIndex();
+                switch(No_A){
+                    case 0:
+                        SQL=SQL_P;
+                        break;
+                    case 1:
+                        SQL=SQL_P+"WHERE numero like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 2:
+                        SQL=SQL_P+"WHERE nom like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 3:
+                        SQL=SQL_P+"WHERE prenom like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 4:
+                        SQL=SQL_P+"WHERE adresse like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 5:
+                        SQL=SQL_P+"WHERE tel like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 6:
+                        SQL=SQL_P+"WHERE mutuelle like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 7:
+                        SQL=SQL_P+"WHERE no_doc like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 8:
+                        SQL=SQL_P+"WHERE nom_doc like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 9:
+                        SQL=SQL_P+"WHERE prenom_doc like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 10:
+                        SQL=SQL_P+"WHERE tel_doc like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                    case 11:
+                        SQL=SQL_P+"WHERE specialite like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                        break;
+                }
+            }
+        ///////////////////////////////////////////INTERROGATION DE LA BD/////////////////////////////////
+       
+        
+        
+        
     }//GEN-LAST:event_RechercheActionPerformed
 
     /**
@@ -176,8 +335,8 @@ public class Rch_Patients extends javax.swing.JFrame {
     private javax.swing.JButton Retour;
     private javax.swing.JTextField Texte_recherche;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea zone_resultat;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
 }

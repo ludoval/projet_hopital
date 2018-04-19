@@ -5,6 +5,7 @@
  */
 package vue;
 import Controleur.Connexion;
+import vue.Recherche;
 /**
  *
  * @author axel9
@@ -29,13 +30,13 @@ public class Rch_Personnels extends javax.swing.JFrame {
     private void initComponents() {
 
         Retour = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        Texte_recherche = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        zone_resultat = new javax.swing.JTextArea();
+        Categorie = new javax.swing.JComboBox<>();
+        Attribut = new javax.swing.JComboBox<>();
+        Recherche = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,28 +47,42 @@ public class Rch_Personnels extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Texte_recherche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                Texte_rechercheActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Rechercher par :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Docteur", "Infirmier" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        Categorie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Docteur", "Infirmier" }));
+        Categorie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                CategorieActionPerformed(evt);
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Attribut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "aucun", "numero", "nom", "prenom", "adresse", "tel" }));
+        Attribut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AttributActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Recherche");
+        Recherche.setText("Recherche");
 
-        zone_resultat.setColumns(20);
-        zone_resultat.setRows(5);
-        jScrollPane1.setViewportView(zone_resultat);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "numero", "nom", "prenom", "adresse", "tel"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,21 +91,21 @@ public class Rch_Personnels extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Retour)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 728, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Categorie, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Attribut, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Texte_recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 938, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,13 +114,13 @@ public class Rch_Personnels extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Retour)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                    .addComponent(Texte_recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Categorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Attribut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Recherche))
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -117,13 +132,82 @@ public class Rch_Personnels extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_RetourActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void CategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategorieActionPerformed
+        if(Categorie.getSelectedIndex()==0){
+            if(Attribut.getItemCount()>6){
+               Attribut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "aucun", "numero", "prenom", "adresse", "tel" }));
+               Attribut.addItem("specialite");
+               jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "numero", "nom", "prenom", "adresse", "tel","specialite"
+            }
+        ));
+            }
+            else{
+                 Attribut.addItem("specialite");
+                 jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "numero", "nom", "prenom", "adresse", "tel","specialite"
+            }
+        ));
+            }      
+        }
+        if(Categorie.getSelectedIndex()==1){
+            if(Attribut.getItemCount()>6){
+               Attribut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "aucun", "numero", "prenom", "adresse", "tel" }));
+               Attribut.addItem("nom_service");
+               Attribut.addItem("salaire");
+               Attribut.addItem("rotation");
+               jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null,null,null},
+                {null, null, null, null, null, null,null,null},
+                {null, null, null, null, null, null,null,null},
+                {null, null, null, null, null, null,null,null}
+            },
+            new String [] {
+                "numero", "nom", "prenom", "adresse", "tel", "nom_service","salaire","rotation"
+            }
+        ));
+            }
+            else{
+                 Attribut.addItem("nom_service");
+                 Attribut.addItem("salaire");
+                 Attribut.addItem("rotation");
+                 jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null,null,null},
+                {null, null, null, null, null, null,null,null},
+                {null, null, null, null, null, null,null,null},
+                {null, null, null, null, null, null,null,null}
+            },
+            new String [] {
+                "numero", "nom", "prenom", "adresse", "tel", "nom_service","salaire","rotation"
+            }
+        ));
+            }      
+        }
+    }//GEN-LAST:event_CategorieActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void Texte_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Texte_rechercheActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_Texte_rechercheActionPerformed
+
+    private void AttributActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AttributActionPerformed
+        
+    }//GEN-LAST:event_AttributActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,13 +245,13 @@ public class Rch_Personnels extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> Attribut;
+    private javax.swing.JComboBox<String> Categorie;
+    private javax.swing.JButton Recherche;
     private javax.swing.JButton Retour;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JTextField Texte_recherche;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextArea zone_resultat;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

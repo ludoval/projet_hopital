@@ -96,19 +96,13 @@ public class Maj_P extends javax.swing.JFrame {
         adresse = new javax.swing.JTextField();
         mutuelle = new javax.swing.JTextField();
         num_doc = new javax.swing.JTextField();
-        nom_doc = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         Supprimer = new javax.swing.JButton();
         Modifier = new javax.swing.JButton();
         Ajouter = new javax.swing.JButton();
-        prenom_doc = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         tel = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        spe = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -178,13 +172,7 @@ public class Maj_P extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setText("Nom doc");
-
-        jLabel11.setText("Prenom doc");
-
         jLabel12.setText("Téléphone");
-
-        jLabel13.setText("Spécialité");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -212,20 +200,14 @@ public class Maj_P extends javax.swing.JFrame {
                                 .addComponent(jLabel6))
                             .addComponent(jLabel7)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel12))
+                        .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(nom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                             .addComponent(adresse, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(mutuelle, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tel, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(num_doc, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nom_doc, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(prenom_doc, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(spe, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(prenom, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(idpat))
                         .addGap(49, 49, 49)
@@ -269,19 +251,7 @@ public class Maj_P extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(num_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nom_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(prenom_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(spe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addGap(60, 60, 60))
+                        .addGap(150, 150, 150))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -422,7 +392,7 @@ public class Maj_P extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SupprimerActionPerformed
     /**
-     * récupère les infos dans la table pour remplir les champs 
+     * récupère les infos dans la table pour remplir les champs pour les mettre dans les champs de texte
      * @param evt click sur la JTable
      */
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
@@ -435,9 +405,7 @@ public class Maj_P extends javax.swing.JFrame {
         tel.setText(model.getValueAt(i,4).toString());
         mutuelle.setText(model.getValueAt(i,5).toString());
         num_doc.setText(model.getValueAt(i,6).toString());
-        nom_doc.setText(model.getValueAt(i,7).toString());
-        prenom_doc.setText(model.getValueAt(i,8).toString());
-        spe.setText(model.getValueAt(i,10).toString());
+        
         
     }//GEN-LAST:event_tableMouseClicked
     /**
@@ -530,10 +498,7 @@ public class Maj_P extends javax.swing.JFrame {
     private javax.swing.JTextField adresse;
     private javax.swing.JTextField idpat;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -543,11 +508,8 @@ public class Maj_P extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField mutuelle;
     private javax.swing.JTextField nom;
-    private javax.swing.JTextField nom_doc;
     private javax.swing.JTextField num_doc;
     private javax.swing.JTextField prenom;
-    private javax.swing.JTextField prenom_doc;
-    private javax.swing.JTextField spe;
     private javax.swing.JTable table;
     private javax.swing.JTextField tel;
     // End of variables declaration//GEN-END:variables

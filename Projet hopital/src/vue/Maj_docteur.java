@@ -8,6 +8,8 @@ import Controleur.Connexion;
 import Modele.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -280,7 +282,14 @@ public class Maj_docteur extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public boolean DocteurExiste(String num) throws SQLException{
+        String query="SELECT numero FROM docteur WHERE numero="+num;
+   
+        link.requetes=link.remplirChampsRequete(query);
+        
+        if(link.requetes.isEmpty())return false;//le docteur n'est pas présent dans la bdd
+        else return true;
+    }
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         int i = jTable1.getSelectedRow();
@@ -295,31 +304,61 @@ public class Maj_docteur extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void RetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetourActionPerformed
-        // TODO add your handling code here:
+        
         Maj_Employe maj_employe=new  Maj_Employe(link);
         maj_employe.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_RetourActionPerformed
 
     private void jButton_AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AjouterActionPerformed
-        // TODO add your handling code here:
+         if(jTextField_Numero.getText().equals("")||jTextField_Nom.getText().equals("")||jTextField_Prenom.getText().equals("")||
+                jTextField_Specialite.getText().equals("")||jTextField_Telephone.getText().equals("")||jTextField_Adresse.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"L'un des champs est vide");
+        }else try {
+            if(!DocteurExiste(jTextField_Numero.getText())){
         String query1="INSERT INTO docteur(numero,specialite) VALUES ("+jTextField_Numero.getText()+",'"+jTextField_Specialite.getText()+"')";
         String query2="INSERT INTO employe(numero,nom,prenom,adresse,tel) VALUES ("+jTextField_Numero.getText()+",'"+jTextField_Nom.getText()+"','"+jTextField_Prenom.getText()+"','"+jTextField_Adresse.getText()+"','"+jTextField_Telephone.getText()+"')";
         executerSQLquery(query1,query2,"insérée");
+            }else{
+                JOptionPane.showMessageDialog(null,"Ce docteur éxiste déjà");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Maj_infirmier.class.getName()).log(Level.SEVERE, null, ex);
+        }       
     }//GEN-LAST:event_jButton_AjouterActionPerformed
 
     private void jButton_SupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SupprimerActionPerformed
-        // TODO add your handling code here:
-        String query1= "DELETE FROM `docteur` WHERE `numero` = "+jTextField_Numero.getText();
-        String query2= "DELETE FROM `employe` WHERE `numero`= "+jTextField_Numero.getText();
-        executerSQLquery(query1,query2,"effacée");
+        if(jTextField_Numero.getText().equals("")||jTextField_Nom.getText().equals("")||jTextField_Prenom.getText().equals("")||
+                jTextField_Specialite.getText().equals("")||jTextField_Telephone.getText().equals("")||jTextField_Adresse.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"L'un des champs est vide");
+        }else try {
+            if(DocteurExiste(jTextField_Numero.getText())){
+                    String query1= "DELETE FROM `docteur` WHERE `numero` = "+jTextField_Numero.getText();
+                    String query2= "DELETE FROM `employe` WHERE `numero`= "+jTextField_Numero.getText();
+                    executerSQLquery(query1,query2,"effacée");
+            }else{
+                JOptionPane.showMessageDialog(null,"Ce docteur n'éxiste pas");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Maj_infirmier.class.getName()).log(Level.SEVERE, null, ex);
+        }       
     }//GEN-LAST:event_jButton_SupprimerActionPerformed
 
     private void jButton_ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ModifierActionPerformed
-        // TODO add your handling code here:
-        String query1="UPDATE docteur SET `specialite`='"+jTextField_Specialite.getText()+"' WHERE `numero`="+jTextField_Numero.getText();;
-        String query2="UPDATE employe SET `nom`='"+jTextField_Nom.getText()+"',`prenom`='"+jTextField_Prenom.getText()+"',`adresse`='"+jTextField_Adresse.getText()+"',`tel`='"+jTextField_Telephone.getText()+"' WHERE `numero`="+jTextField_Numero.getText();
-        executerSQLquery(query1,query2, "modifié");
+        if(jTextField_Numero.getText().equals("")||jTextField_Nom.getText().equals("")||jTextField_Prenom.getText().equals("")||
+                jTextField_Specialite.getText().equals("")||jTextField_Telephone.getText().equals("")||jTextField_Adresse.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"L'un des champs est vide");
+        }else try {
+            if(DocteurExiste(jTextField_Numero.getText())){
+                String query1="UPDATE docteur SET `specialite`='"+jTextField_Specialite.getText()+"' WHERE `numero`="+jTextField_Numero.getText();;
+                String query2="UPDATE employe SET `nom`='"+jTextField_Nom.getText()+"',`prenom`='"+jTextField_Prenom.getText()+"',`adresse`='"+jTextField_Adresse.getText()+"',`tel`='"+jTextField_Telephone.getText()+"' WHERE `numero`="+jTextField_Numero.getText();
+                executerSQLquery(query1,query2, "modifié");
+            }else{
+                JOptionPane.showMessageDialog(null,"Ce docteur n'éxiste pas");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Maj_infirmier.class.getName()).log(Level.SEVERE, null, ex);
+        }       
     }//GEN-LAST:event_jButton_ModifierActionPerformed
     
     /**

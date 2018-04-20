@@ -18,35 +18,49 @@ import vue.Recherche;
  */
 public class Rch_Patients extends javax.swing.JFrame {
     private static Connexion link;
-    /** Creates new form Rch_Patients */
+    /** 
+     * Creates new form Rch_Patients 
+     * @param l transfert de connexion
+     */
     public Rch_Patients(Connexion l) {
         initComponents();
         link=l;
  
     }
+    /**
+     * 
+     * @param SQL
+     * @return une arrayliste de patients hospitalisé
+     */
         public ArrayList<MaladeHosp> getMaladeHospList(String SQL)
     {
+        //declaration des variables
         ArrayList<MaladeHosp> maladehospList=new ArrayList<MaladeHosp>();
         String query=SQL;
         Statement st;
         ResultSet rs;
+       //traitement
         try{
-            st=link.getConn().createStatement();
-            rs = st.executeQuery(query); 
+            st=link.getConn().createStatement();//crée une requête
+            rs = st.executeQuery(query); //éxecute dans la bdd
             MaladeHosp maladehosp;
             while(rs.next())
            {
+               //remplie les différents champs dans l'arraylist =>les attributs d'un patient
                maladehosp= new MaladeHosp(rs.getString("numero"),rs.getString("nom"),rs.getString("prenom"),rs.getString("tel"), rs.getString("adresse"),rs.getString("mutuelle"),rs.getString("no_doc"),rs.getString("nom_doc"),rs.getString("prenom_doc"),rs.getString("tel_doc"),rs.getString("specialite"),rs.getString("no_chambre"),rs.getString("service"));
                maladehospList.add(maladehosp);
            }
         }
-         catch (Exception e) {
+         catch (Exception e) {//en cas de problème affiche l'erreur
            e.printStackTrace();
         }
         return maladehospList;
     }
     // Display Data In JTable
-   
+   /**
+    * remplie le tableau
+    * @param SQL requête
+    */
    public void Show_MaladeHosp_In_JTable(String SQL)
    {
        ArrayList<MaladeHosp> list = getMaladeHospList(SQL);
@@ -70,12 +84,19 @@ public class Rch_Patients extends javax.swing.JFrame {
            model.addRow(row);
        }
     }
+   /**
+    * 
+    * @param SQL requête
+    * @return une arrayliste contenant les malades correspondants à la requête
+    */
     public ArrayList<Malade> getMaladeList(String SQL)
     {
+        //déclaration des variable
         ArrayList<Malade> maladeList=new ArrayList<Malade>();
         String query=SQL;
         Statement st;
         ResultSet rs;
+        //traitement
         try{
             st=link.getConn().createStatement();
             rs = st.executeQuery(query); 
@@ -87,13 +108,16 @@ public class Rch_Patients extends javax.swing.JFrame {
            
         }
         }
-         catch (Exception e) {
+         catch (Exception e) {//en cas de problème
            e.printStackTrace();
         }
         return maladeList;
     }
     // Display Data In JTable
-   
+   /**
+    * même chose mais pour un malde non hospitalisé
+    * @param SQL requête
+    */
    public void Show_Malade_In_JTable(String SQL)
    {
        ArrayList<Malade> list = getMaladeList(SQL);
@@ -279,54 +303,57 @@ public class Rch_Patients extends javax.swing.JFrame {
         C=Categorie.getSelectedIndex();
         int No_A;
         String SQL = null;
+        //analyse de la 1ere combobox
         switch(C){
     
                  case 0: 
                     No_A=Attribut.getSelectedIndex();
+                    //analyse de la combo box
                      switch(No_A){
                     case 0:
-                        SQL=SQL_P_H+" GROUP BY M.numero;";
+                        SQL=SQL_P_H+" GROUP BY M.numero;";//par défaut choix=aucun
                         break;
                     case 1:
-                        SQL=SQL_P_H+"AND M.numero ="+Texte_recherche.getText()+" GROUP BY M.numero;";
+                        SQL=SQL_P_H+"AND M.numero ="+Texte_recherche.getText()+" GROUP BY M.numero;";//rch par numero malade
                         break;
                     case 2:
-                        SQL=SQL_P_H+"AND M.nom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        SQL=SQL_P_H+"AND M.nom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";//rch par nom par malade
                         break;
                     case 3:
-                        SQL=SQL_P_H+"AND M.prenom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        SQL=SQL_P_H+"AND M.prenom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";//recherche par prenom malade
                         break;
                     case 4:
-                        SQL=SQL_P_H+"AND M.adresse like '%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        SQL=SQL_P_H+"AND M.adresse like '%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";//recherche par adresse
                         break;
                     case 5:
-                        SQL=SQL_P_H+"AND M.tel like '%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        SQL=SQL_P_H+"AND M.tel like '%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";//rech par téléphone
                         break;
                     case 6:
-                        SQL=SQL_P_H+"AND M.mutuelle like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        SQL=SQL_P_H+"AND M.mutuelle like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";//par mutuelle
                         break;
                     case 7:
-                        SQL=SQL_P_H+"AND E.numero ="+Texte_recherche.getText()+" GROUP BY M.numero;";
+                        SQL=SQL_P_H+"AND E.numero ="+Texte_recherche.getText()+" GROUP BY M.numero;";//par numéro du docteur
                         break;
                     case 8:
-                        SQL=SQL_P_H+"AND E.nom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        SQL=SQL_P_H+"AND E.nom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";//rch par nom doc
                         break;
                     case 9:
-                        SQL=SQL_P_H+"AND E.prenom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        SQL=SQL_P_H+"AND E.prenom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";//rch prénom doc
                         break;
                     case 10:
-                        SQL=SQL_P_H+"AND E.tel like '%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        SQL=SQL_P_H+"AND E.tel like '%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";//rch by tel doc
                         break;
                     case 11:
-                        SQL=SQL_P_H+"AND D.specialite like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        SQL=SQL_P_H+"AND D.specialite like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";//rch spe doc
                         break;
                     case 12:
-                        SQL=SQL_P_H+"AND H.no_chambre ="+Texte_recherche.getText()+" GROUP BY M.numero;";
+                        SQL=SQL_P_H+"AND H.no_chambre ="+Texte_recherche.getText()+" GROUP BY M.numero;";//rch par numéro de chambre
                         break;
                     case 13:
-                        SQL=SQL_P_H+"AND SV.nom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        SQL=SQL_P_H+"AND SV.nom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";//rch by nom service 
                         break;
                     }
+                    //reshape la table
                     jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                
@@ -339,12 +366,13 @@ public class Rch_Patients extends javax.swing.JFrame {
                     break;
             case 1: 
                 No_A=Attribut.getSelectedIndex();
+                //analyse combo_box
                 switch(No_A){
                     case 0:
                         SQL=SQL_P+" GROUP BY M.numero;";
                         break;
                     case 1:
-                        SQL=SQL_P+"AND M.numero = "+Texte_recherche.getText()+" GROUP BY M.numero;";
+                        SQL=SQL_P+"AND M.numero = "+Texte_recherche.getText()+" GROUP BY M.numero;";//rch 
                         break;
                     case 2:
                         SQL=SQL_P+"AND M.nom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
@@ -377,6 +405,7 @@ public class Rch_Patients extends javax.swing.JFrame {
                         SQL=SQL_P+"AND D.specialite like"+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
                         break;
                 }
+                //reshape la table
                 jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 
@@ -385,7 +414,7 @@ public class Rch_Patients extends javax.swing.JFrame {
                 "numero", "nom", "prenom", "adresse", "tel", "mutuelle", "no_doc", "nom_doc", "prenom_doc", "tel_doc", "specialite"
             }
         ));
-                Show_Malade_In_JTable(SQL);
+                Show_Malade_In_JTable(SQL);//affiche
             }
         Texte_recherche.setText("");
     }//GEN-LAST:event_RechercheActionPerformed

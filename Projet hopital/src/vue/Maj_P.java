@@ -27,7 +27,10 @@ public class Maj_P extends javax.swing.JFrame {
         link=l;
         AffichePatient();
     }
-    
+    /**
+     * 
+     * @return une ligne de la JTable
+     */
     public ArrayList<Malade> getMaladeList(){
         ArrayList<Malade> list=new ArrayList<>();
         String query="SELECT DISTINCT M.numero, M.nom, M.prenom,M.adresse, M.mutuelle, M.tel,E.numero as num_doc, E.nom as nom_doc, E.prenom as prenom_doc, E.tel as tel_doc, D.specialite FROM malade M,hospitalisation H,soigne S ,docteur D, employe E WHERE M.numero=S.no_malade AND S.no_docteur=E.numero AND S.no_docteur=D.numero ORDER BY `M`.`numero` ASC";
@@ -46,7 +49,9 @@ public class Maj_P extends javax.swing.JFrame {
         }
         return list;
     }
-    
+    /**
+     * affiche les patients dans la Jtable
+     */
     public void AffichePatient(){
         
         ArrayList<Malade> list = getMaladeList();
@@ -288,7 +293,10 @@ public class Maj_P extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * 
+     * @param evt retour à la page précédente
+     */
     private void RetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetourActionPerformed
         Mise_A_Jour maj=new Mise_A_Jour(link);
         maj.setVisible(true);
@@ -296,8 +304,8 @@ public class Maj_P extends javax.swing.JFrame {
     }//GEN-LAST:event_RetourActionPerformed
     /**
      * 
-     * @param num
-     * @return true si le malade existe dans la bdd
+     * @param num numéro d'id du patient
+     * @return true si le malade existe dans la bdd/fase autrement
      * @throws SQLException 
      */
     public boolean MaladeExiste(String num) throws SQLException{
@@ -308,7 +316,12 @@ public class Maj_P extends javax.swing.JFrame {
         if(link.requetes.isEmpty())return false;//le malade n'est pas présent dans la bdd
         else return true;
     }
-    
+    /**
+     * 
+     * @param num id du docteur
+     * @return vrai si le doc existe
+     * @throws SQLException 
+     */
     public boolean DocExiste(String num) throws SQLException{
         String query="SELECT numero FROM docteur WHERE numero="+num;
    
@@ -317,7 +330,10 @@ public class Maj_P extends javax.swing.JFrame {
         if(link.requetes.isEmpty())return false;//le doc n'est pas présent dans la bdd
         else return true;
     }
-    
+    /**
+     *  ajoute dans les table soigne,malade(au besoin) 
+     * @param evt bouton ajouter pressé
+     */
     private void AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjouterActionPerformed
         String query1,query3;
         
@@ -345,7 +361,10 @@ public class Maj_P extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_AjouterActionPerformed
-
+    /**
+     * modifie la table malade
+     * @param evt modifier préssé
+     */
     private void ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifierActionPerformed
        //vérifier les champs 
         String query1,query2,query3;
@@ -369,7 +388,10 @@ public class Maj_P extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_ModifierActionPerformed
-
+    /**
+     * supprime le malade de toutes les bases existantes
+     * @param evt "supprimer" à été enclenché
+     */
     private void SupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SupprimerActionPerformed
         //vérifier les champs 
         String query1,query2;
@@ -399,7 +421,10 @@ public class Maj_P extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_SupprimerActionPerformed
-
+    /**
+     * récupère les infos dans la table pour remplir les champs 
+     * @param evt click sur la JTable
+     */
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         int i=table.getSelectedRow();
         TableModel model=table.getModel();
@@ -415,7 +440,11 @@ public class Maj_P extends javax.swing.JFrame {
         spe.setText(model.getValueAt(i,10).toString());
         
     }//GEN-LAST:event_tableMouseClicked
-    //vérification de la modif & éxecution
+    /**
+     * vérification du bon fonctionnement d'une requête
+     * @param query requête
+     * @param message de confirmation ou d'erreur
+     */
     public void executerSQLquery(String query,String message){
        Statement st;
        try{
@@ -434,6 +463,12 @@ public class Maj_P extends javax.swing.JFrame {
            ex.printStackTrace();
        }
     }
+    /**
+     * vérifie le bon fonctionnement de deux requêtes
+     * @param query1 requête 1
+     * @param query2 requête 2
+     * @param message message de confirmation ou d'erreur selon le déroulement
+     */
     public void executerSQLquery(String query1,String query2,String message){
        Statement st;
        try{

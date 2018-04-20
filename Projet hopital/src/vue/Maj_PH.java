@@ -27,7 +27,10 @@ public class Maj_PH extends javax.swing.JFrame {
         link=l;
         AffichePatientH();
     }
-    
+    /**
+     * crée uneliste de malade hospitalisés
+     * @return cette même liste
+     */
     public ArrayList<MaladeHosp> getMaladeList(){
         ArrayList<MaladeHosp> list=new ArrayList<>();
         String query="SELECT DISTINCT M.numero, M.nom, M.prenom,M.adresse, M.tel, M.mutuelle, H.no_chambre as chambre, SV.code as nom_serv,E.numero as num_doc, E.nom as nom_doc, E.prenom as prenom_doc, E.tel as tel_doc, D.specialite FROM malade M,hospitalisation H,service SV, soigne S, docteur D, employe E WHERE M.numero=H.no_malade AND H.no_malade=S.no_malade AND S.no_docteur=D.numero AND D.numero=E.numero AND H.code_service=SV.code ORDER BY `M`.`numero` ASC";
@@ -46,7 +49,9 @@ public class Maj_PH extends javax.swing.JFrame {
         }
         return list;
     }
-    
+    /**
+     * affiche un patient hospitalisé
+     */
     public void AffichePatientH(){
         
         ArrayList<MaladeHosp> list = getMaladeList();
@@ -323,7 +328,7 @@ public class Maj_PH extends javax.swing.JFrame {
     }//GEN-LAST:event_RetourActionPerformed
     /**
      * 
-     * @param num
+     * @param num id du patient
      * @return si le malade existe dans la bdd
      * @throws SQLException pour la forme
      */
@@ -335,7 +340,12 @@ public class Maj_PH extends javax.swing.JFrame {
         if(link.requetes.isEmpty())return false;//le malade n'est pas présent dans la bdd
         else return true;
     }
-    
+    /**
+     * 
+     * @param num id du docteur
+     * @return vrai si le docteur en vraiment un false sinon
+     * @throws SQLException s'il y a une erreur
+     */
     public boolean DocExiste(String num) throws SQLException{
         String query="SELECT numero FROM docteur WHERE numero="+num;
    
@@ -344,6 +354,10 @@ public class Maj_PH extends javax.swing.JFrame {
         if(link.requetes.isEmpty())return false;//le doc n'est pas présent dans la bdd
         else return true;
     }
+    /**
+     * ajoute le malade dans hospitalisation, soigne (et malade au besoin)
+     * @param evt 
+     */
     private void AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjouterActionPerformed
         String query1,query2,query3;
         ArrayList<Object> lit;
@@ -369,7 +383,10 @@ public class Maj_PH extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_AjouterActionPerformed
-
+    /**
+     * modifie les tables hospitalisation et malade 
+     * @param evt "modifier" pressed
+     */
     private void ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifierActionPerformed
        //vérifier les champs 
         String query1,query2,query3;
@@ -397,7 +414,10 @@ public class Maj_PH extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_ModifierActionPerformed
-
+    /**
+     * supression dans malade, hospitalisation et soigne
+     * @param evt "supprimer" pressed
+     */
     private void SupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SupprimerActionPerformed
         //vérifier les champs 
         String query1,query2,query3,query;
@@ -432,7 +452,10 @@ public class Maj_PH extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_SupprimerActionPerformed
-
+    /**
+     * récupère les infos de la JTable
+     * @param evt clique sur le tableau
+     */
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         int i=table.getSelectedRow();
         TableModel model=table.getModel();
@@ -449,7 +472,11 @@ public class Maj_PH extends javax.swing.JFrame {
         num_chambre.setText(model.getValueAt(i,11).toString());
         nom_serv.setText(model.getValueAt(i,12).toString());
     }//GEN-LAST:event_tableMouseClicked
-    //vérification de la modif & éxecution
+    /**
+     * exectue et vérifie le bon fonctionnement d'une requête
+     * @param query requête
+     * @param message information sur le déroulement de la requête
+     */
     public void executerSQLquery(String query,String message){
        Statement st;
        try{
@@ -468,6 +495,12 @@ public class Maj_PH extends javax.swing.JFrame {
            ex.printStackTrace();
        }
     }
+    /**
+     * même chose mais pour deux requêtes
+     * @param query1
+     * @param query2
+     * @param message 
+     */
     public void executerSQLquery(String query1,String query2,String message){
        Statement st;
        try{

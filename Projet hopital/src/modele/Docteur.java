@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modele;
+package Modele;
 
 /**
  *
@@ -12,10 +12,13 @@ package modele;
 public class Docteur extends Employe{
     //attribut 
     private String specialite;
+
+    public Docteur(String numero, String nom, String prenom, String adresse, String tel,String specialite) {
+        super(numero, nom, prenom,adresse,tel);
+        this.specialite=specialite;
+    }
     //getters 
-    public String getSpe(){return specialite;}
-    //METHODES
-    public void soigne(Malade mal){
-        
+    public String getspecialite(){
+        return specialite;
     }
 }

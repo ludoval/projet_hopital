@@ -8,8 +8,6 @@ import Controleur.Connexion;
 import Modele.*;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -294,20 +292,7 @@ public class Maj_docteur extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /**
-     * 
-     * @param num id du docteur
-     * @return vrai si le docteur en vraiment un false sinon
-     * @throws SQLException s'il y a une erreur
-     */
-    public boolean DocExiste(String num) throws SQLException{
-        String query="SELECT numero FROM docteur WHERE numero="+num;
-   
-        link.requetes=link.remplirChampsRequete(query);
-        
-        if(link.requetes.isEmpty())return false;//le doc n'est pas présent dans la bdd
-        else return true;
-    }
+
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         
         int i = jTable1.getSelectedRow();
@@ -332,72 +317,30 @@ public class Maj_docteur extends javax.swing.JFrame {
      * @param evt 
      */
     private void jButton_AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AjouterActionPerformed
-        if(jTextField_Adresse.getText().equals("")||jTextField_Nom.getText().equals("")||jTextField_Numero.getText().equals("")||
-                jTextField_Prenom.getText().equals("")||jTextField_Specialite.getText().equals("")||
-                jTextField_Telephone.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"L'un des champs est vide");
-        }else{
-            try {
-                //vérif doc inexistant
-                if(DocExiste(jTextField_Numero.getText())){
-                    JOptionPane.showMessageDialog(null,"Ce docteur éxiste déjà");
-                }else {
-                    String query1="INSERT INTO docteur(numero,specialite) VALUES ("+jTextField_Numero.getText()+",'"+jTextField_Specialite.getText()+"')";
-                    String query2="INSERT INTO employe(numero,nom,prenom,adresse,tel) VALUES ("+jTextField_Numero.getText()+",'"+jTextField_Nom.getText()+"','"+jTextField_Prenom.getText()+"','"+jTextField_Adresse.getText()+"','"+jTextField_Telephone.getText()+"')";
-                    executerSQLquery(query1,query2,"insérée");
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Maj_PH.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        
+        String query1="INSERT INTO docteur(numero,specialite) VALUES ("+jTextField_Numero.getText()+",'"+jTextField_Specialite.getText()+"')";
+        String query2="INSERT INTO employe(numero,nom,prenom,adresse,tel) VALUES ("+jTextField_Numero.getText()+",'"+jTextField_Nom.getText()+"','"+jTextField_Prenom.getText()+"','"+jTextField_Adresse.getText()+"','"+jTextField_Telephone.getText()+"')";
+        executerSQLquery(query1,query2,"insérée");
     }//GEN-LAST:event_jButton_AjouterActionPerformed
     /**
      * Méthode qui permet de supprimer les donnés
      * @param evt 
      */
     private void jButton_SupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SupprimerActionPerformed
-        if(jTextField_Adresse.getText().equals("")||jTextField_Nom.getText().equals("")||jTextField_Numero.getText().equals("")||
-                jTextField_Prenom.getText().equals("")||jTextField_Specialite.getText().equals("")||
-                jTextField_Telephone.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"L'un des champs est vide");
-        }else{
-            try {
-                //vérif doc inexistant
-                if(!DocExiste(jTextField_Numero.getText())){
-                    JOptionPane.showMessageDialog(null,"Ce docteur n'éxiste pas");
-                }else{
-                    String query1= "DELETE FROM `docteur` WHERE `numero` = "+jTextField_Numero.getText();
-                    String query2= "DELETE FROM `employe` WHERE `numero`= "+jTextField_Numero.getText();
-                    executerSQLquery(query1,query2,"effacée");
-                } 
-            }catch (SQLException ex) {
-                Logger.getLogger(Maj_PH.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        
+        String query1= "DELETE FROM `docteur` WHERE `numero` = "+jTextField_Numero.getText();
+        String query2= "DELETE FROM `employe` WHERE `numero`= "+jTextField_Numero.getText();
+        executerSQLquery(query1,query2,"effacée");
     }//GEN-LAST:event_jButton_SupprimerActionPerformed
     /**
      * Méthode qui permet de modifier les données
      * @param evt 
      */
     private void jButton_ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ModifierActionPerformed
-        if(jTextField_Adresse.getText().equals("")||jTextField_Nom.getText().equals("")||jTextField_Numero.getText().equals("")||
-                jTextField_Prenom.getText().equals("")||jTextField_Specialite.getText().equals("")||
-                jTextField_Telephone.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"L'un des champs est vide");
-        }else{
-            try {
-                //vérif doc inexistant
-                if(!DocExiste(jTextField_Numero.getText())){
-                    JOptionPane.showMessageDialog(null,"Ce docteur n'éxiste pas");
-                }else{
-                    String query1="UPDATE docteur SET `specialite`='"+jTextField_Specialite.getText()+"' WHERE `numero`="+jTextField_Numero.getText();;
-                    String query2="UPDATE employe SET `nom`='"+jTextField_Nom.getText()+"',`prenom`='"+jTextField_Prenom.getText()+"',`adresse`='"+jTextField_Adresse.getText()+"',`tel`='"+jTextField_Telephone.getText()+"' WHERE `numero`="+jTextField_Numero.getText();
-                    executerSQLquery(query1,query2, "modifié");
-                } 
-            }catch (SQLException ex) {
-                Logger.getLogger(Maj_PH.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        
+        String query1="UPDATE docteur SET `specialite`='"+jTextField_Specialite.getText()+"' WHERE `numero`="+jTextField_Numero.getText();;
+        String query2="UPDATE employe SET `nom`='"+jTextField_Nom.getText()+"',`prenom`='"+jTextField_Prenom.getText()+"',`adresse`='"+jTextField_Adresse.getText()+"',`tel`='"+jTextField_Telephone.getText()+"' WHERE `numero`="+jTextField_Numero.getText();
+        executerSQLquery(query1,query2, "modifié");
     }//GEN-LAST:event_jButton_ModifierActionPerformed
     
     /**

@@ -48,15 +48,21 @@
                           </Group>
                           <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="nom" alignment="0" pref="110" max="32767" attributes="0"/>
                           <Component id="adresse" alignment="0" max="32767" attributes="0"/>
                           <Component id="mutuelle" alignment="0" max="32767" attributes="0"/>
                           <Component id="tel" alignment="0" max="32767" attributes="0"/>
                           <Component id="num_doc" alignment="0" max="32767" attributes="0"/>
+                          <Component id="nom_doc" alignment="0" max="32767" attributes="0"/>
+                          <Component id="prenom_doc" alignment="0" max="32767" attributes="0"/>
+                          <Component id="spe" alignment="0" max="32767" attributes="0"/>
                           <Component id="prenom" alignment="0" max="32767" attributes="0"/>
                           <Component id="idpat" max="32767" attributes="0"/>
                       </Group>
@@ -113,7 +119,22 @@
                           <Component id="num_doc" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="nom_doc" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="prenom_doc" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="spe" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" min="-2" pref="359" max="-2" attributes="0"/>
               </Group>
@@ -186,6 +207,8 @@
     <Component class="javax.swing.JTextField" name="mutuelle">
     </Component>
     <Component class="javax.swing.JTextField" name="num_doc">
+    </Component>
+    <Component class="javax.swing.JTextField" name="nom_doc">
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -304,11 +327,30 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AjouterActionPerformed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JTextField" name="prenom_doc">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nom doc"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel11">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Prenom doc"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JTextField" name="tel">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
       <Properties>
         <Property name="text" type="java.lang.String" value="T&#xe9;l&#xe9;phone"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="spe">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel13">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sp&#xe9;cialit&#xe9;"/>
       </Properties>
     </Component>
   </SubComponents>

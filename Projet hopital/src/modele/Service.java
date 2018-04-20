@@ -11,26 +11,15 @@ import java.util.ArrayList;
  */
 public class Service {
     //attributs
-    protected String code;
-    protected String nom;
-    protected String batiment;
-    protected String directeur;
-    protected String nom_directeur;
-    protected String prenom_directeur;
+    private String code;
+    private String nom;
+    private char batiment;
+    private int directeur;
+    private ArrayList<Employe> employes;
     //getters
     public String getCode(){return code;}
     public String getNom(){return nom;}
-    public String getBatiment(){return batiment;}
-    public String getDirecteur(){return directeur;}
-    public String getNom_directeur(){return nom_directeur;}
-    public String getPrenom_directeur(){return prenom_directeur;}
-    
-    public Service(String code,String nom,String bâtiment,String directeur,String nom_directeur,String prenom_directeur){
-        this.code=code;
-        this.nom=nom;
-        this.batiment=bâtiment;
-        this.directeur=directeur;
-        this.nom_directeur=nom_directeur;
-        this.prenom_directeur=prenom_directeur;
-    }
+    public char getBatiment(){return batiment;}
+    public int getDirecteur(){return directeur;}
+    //public ArrayList getEmploye(){return employes;}
 }

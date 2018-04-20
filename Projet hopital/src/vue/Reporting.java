@@ -42,24 +42,16 @@ public class Reporting extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         Retour = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton_afficher_graphique = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Retour.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        Retour.setForeground(new java.awt.Color(255, 0, 0));
         Retour.setText("Retour");
         Retour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,256 +59,64 @@ public class Reporting extends javax.swing.JFrame {
             }
         });
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Répartition des salaires", "Répartition des infirmiers par service", "Répartition des docteurs par spécialité ", "Répartition des patients par docteur ", "Répartition des patients par service", "Salaire moyen par service", "Nombre moyen de chambre par service du batiment A", "Malade étant soigné par plus de trois spécialistes", "Rapport Infimier/Malade par service", "Docteur ayant au moins un malade hospitalisé" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jButton_afficher_graphique.setBackground(new java.awt.Color(255, 255, 255));
+        jButton_afficher_graphique.setText("Afficher le graphique");
+        jButton_afficher_graphique.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_afficher_graphiqueActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mathieu\\Pictures\\dare13_frth.jpg")); // NOI18N
+
+        jLabel1.setBackground(new java.awt.Color(51, 51, 255));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("Reporting");
-
-        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jButton1.setText("Afficher le graphique");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel3.setText("Répartition des salaires");
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel4.setText("Répartition des infirmiers par service");
-
-        jButton3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jButton3.setText("Afficher le graphique");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jButton4.setText("Afficher le graphique");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel5.setText("Répartition des docteurs par spécialité");
-
-        jButton5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jButton5.setText("Afficher le graphique");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel6.setText("Répartition des patients par docteur");
-
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel7.setText("Répartition des patients par service");
-
-        jButton2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jButton2.setText("Afficher le graphique");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Retour)
-                        .addGap(489, 489, 489)
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel3)
-                                .addGap(67, 67, 67))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(338, 338, 338)
-                                        .addComponent(jLabel4))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel7)
-                                                .addGap(17, 17, 17))
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))))
-                                .addGap(23, 23, 23)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(739, 739, 739))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(212, 212, 212)
-                                .addComponent(jLabel2)
-                                .addGap(527, 527, 527))))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(Retour))
-                .addGap(57, 57, 57)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2)))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jLabel6))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jButton5))
-                .addContainerGap(61, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(Retour)
+                .addGap(379, 379, 379)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(620, 620, 620)
+                .addComponent(jButton_afficher_graphique))
+            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 1070, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Retour)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(150, 150, 150)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(240, 240, 240)
+                .addComponent(jButton_afficher_graphique))
+            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /**
-     * Méthode permettant d'afficher un histogramme montrant les salaires en fonction de l'effectif
-     * @param evt 
-     */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try{
-            //On stocke la requête permettant d'afficher la répartition des salaires
-            String query="SELECT nom,COUNT(numero) AS effectif FROM infirmier I, service SV WHERE SV.code=I.code_service GROUP BY nom;";
-            //On instancie un objet de JDBCCategoryDataset qui nous permet de récupérer l'ensemble des données générées par la requête en paramètre
-            JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
-            //Méthode de JFreeChart qui permet de créer un histogramme
-            JFreeChart chart=ChartFactory.createBarChart("Répartition des infirmiers par service","service","infirmiers", dataset,PlotOrientation.VERTICAL,false,true ,true);
-            //BarRenderer renderer=null;
-            //CategoryPlot plot=null;
-            //On instancie un objet qui permet d'initialiser la fenêtre qui va afficher l'histogramme
-            ChartFrame frame=new ChartFrame("",chart);
-            frame.setVisible(true);
-            frame.setSize(600,800);
-
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
-    /*
-    On répète les mêmes instructions pour implémenter les autres méthodes ActionPerformed sauf que l'on  stocke
-    une requête différente en fonction des données que l'on veut générer dans les autres graphiques.
-    */
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        try{
-            String query="SELECT SV.nom,COUNT(H.no_malade) AS effectif FROM service SV,hospitalisation H WHERE H.code_service=SV.code GROUP BY SV.nom ORDER BY COUNT(H.no_malade);";
-            JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
-            JFreeChart chart=ChartFactory.createBarChart("Répartition des patients par service","services","patients", dataset,PlotOrientation.VERTICAL,false,true ,true);
-            BarRenderer renderer=null;
-            CategoryPlot plot=null;
-            ChartFrame frame=new ChartFrame("",chart);
-            frame.setVisible(true);
-            frame.setSize(600,800);
-
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try{
-            String query="SELECT E.nom,COUNT(S.no_docteur) AS effectif FROM soigne S,employe E WHERE S.no_docteur=E.numero GROUP BY E.nom ORDER BY COUNT(S.no_docteur);";
-            JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
-            JFreeChart chart=ChartFactory.createBarChart("Répartition des patients par docteur","patients","docteurs", dataset,PlotOrientation.VERTICAL,false,true ,true);
-            BarRenderer renderer=null;
-            CategoryPlot plot=null;
-            ChartFrame frame=new ChartFrame("",chart);
-            frame.setVisible(true);
-            frame.setSize(600,800);
-
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try{
-            String query="SELECT specialite,COUNT(numero) AS effectif FROM docteur GROUP BY specialite;";
-            JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
-            JFreeChart chart=ChartFactory.createBarChart("Répartition des docteurs par spécialité","spécialité","docteur", dataset,PlotOrientation.VERTICAL,false,true ,true);
-            BarRenderer renderer=null;
-            CategoryPlot plot=null;
-            ChartFrame frame=new ChartFrame("",chart);
-            frame.setVisible(true);
-            frame.setSize(600,800);
-
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        try{
-            String query="SELECT salaire,COUNT(numero) AS effectif FROM infirmier GROUP BY salaire;";
-            JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
-            JFreeChart chart=ChartFactory.createBarChart("Répartition des salaires","salaire","effectif", dataset,PlotOrientation.VERTICAL,false,true ,true);
-            BarRenderer renderer=null;
-            CategoryPlot plot=null;
-            ChartFrame frame=new ChartFrame("graphe",chart);
-            frame.setVisible(true);
-            frame.setSize(600,800);
-
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void RetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetourActionPerformed
         Accueil Page_acceuil=new Accueil(link);
@@ -324,10 +124,161 @@ public class Reporting extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_RetourActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        
+            
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+    /**
+     * Méthode ActionPerformed qui permet d'afficher l'histogramme sélectionné dans le comboBox
+     * @param evt 
+     */
+    private void jButton_afficher_graphiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_afficher_graphiqueActionPerformed
+
+        int numero_selec=jComboBox1.getSelectedIndex();
+        switch(numero_selec){
+            case 0:
+                try{
+                    //On stocke la requête permettant d'afficher la répartition des salaires
+                    String query="SELECT salaire,COUNT(numero) AS effectif FROM infirmier GROUP BY salaire;";
+                    //On instancie un objet de JDBCCategoryDataset qui nous permet de récupérer l'ensemble des données générées par la requête en paramètre
+                    JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
+                    //"create BarChart" est une méthode de JFreeChart qui permet de créer un histogramme
+                    JFreeChart chart=ChartFactory.createBarChart("Répartition des salaires","salaire","effectif", dataset,PlotOrientation.VERTICAL,false,true ,true);
+                    ChartFrame frame=new ChartFrame("graphe",chart);
+                    frame.setVisible(true);
+                    frame.setSize(600,800);
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null,e);
+                }
+                break;
+                
+            case 1: 
+                try{
+                    String query="SELECT nom,COUNT(numero) AS effectif FROM infirmier I, service SV WHERE SV.code=I.code_service GROUP BY nom;";
+                    JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
+                    JFreeChart chart=ChartFactory.createBarChart("Répartition des infirmiers par service","service","infirmiers", dataset,PlotOrientation.VERTICAL,false,true ,true);
+                    ChartFrame frame=new ChartFrame("",chart);
+                    frame.setVisible(true);
+                    frame.setSize(600,800);
+                    }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null,e);
+                    }
+                break;
+            case 2:
+                try{
+                    String query="SELECT specialite,COUNT(numero) AS effectif FROM docteur GROUP BY specialite;";
+                    JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
+                    JFreeChart chart=ChartFactory.createBarChart("Répartition des docteurs par spécialité","spécialité","docteur", dataset,PlotOrientation.VERTICAL,false,true ,true);
+                    ChartFrame frame=new ChartFrame("",chart);
+                    frame.setVisible(true);
+                    frame.setSize(600,800);
+                    }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null,e);
+                    }
+                break;
+        
+            case 3:
+                try{
+                    String query="SELECT E.nom,COUNT(S.no_docteur) AS effectif FROM soigne S,employe E WHERE S.no_docteur=E.numero GROUP BY E.nom ORDER BY COUNT(S.no_docteur);";
+                    JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
+                    JFreeChart chart=ChartFactory.createBarChart("Répartition des patients par docteur","patients","docteurs", dataset,PlotOrientation.VERTICAL,false,true ,true);
+                    ChartFrame frame=new ChartFrame("",chart);
+                    frame.setVisible(true);
+                    frame.setSize(600,800);
+                    }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null,e);
+                    }
+                break;
+            case 4:
+                try{
+                    String query="SELECT SV.nom,COUNT(H.no_malade) AS effectif FROM service SV,hospitalisation H WHERE H.code_service=SV.code GROUP BY SV.nom ORDER BY COUNT(H.no_malade);";
+                    JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
+                    JFreeChart chart=ChartFactory.createBarChart("Répartition des patients par service","services","patients", dataset,PlotOrientation.VERTICAL,false,true ,true);
+                    ChartFrame frame=new ChartFrame("",chart);
+                    frame.setVisible(true);
+                    frame.setSize(600,800);
+                    }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null,e);
+                    }
+                break;
+            case 5:
+                try{
+                    String query="SELECT SV.code, AVG(I.salaire) AS salaire_moyen FROM service SV, infirmier I WHERE I.code_service=SV.code GROUP BY SV.code;";
+                    JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
+                    JFreeChart chart=ChartFactory.createBarChart("Salaire moyen par service","service","salaire", dataset,PlotOrientation.VERTICAL,false,true ,true);
+                    ChartFrame frame=new ChartFrame("",chart);
+                    frame.setVisible(true);
+                    frame.setSize(600,800);
+                    }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null,e);
+                    }
+                break;
+            case 6:
+                try{
+                    String query="SELECT SV.code,AVG(nb_lits) AS nb_moyen_de_lits FROM service SV, chambre C WHERE C.code_service=SV.code AND SV.code='REA' OR SV.code='CHG' GROUP BY SV.code;";
+                    JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
+                    JFreeChart chart=ChartFactory.createBarChart("Nombre moyen de chambre par service du batiment A","service du batiment A","Nombre moyen de chambre", dataset,PlotOrientation.VERTICAL,false,true ,true);
+                    ChartFrame frame=new ChartFrame("",chart);
+                    frame.setVisible(true);
+                    frame.setSize(600,800);
+                    }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null,e);
+                    }
+                break;
+            case 7:
+                try{
+                    String query="SELECT M.nom,M.prenom, COUNT(no_docteur) AS nb_docteur ,COUNT(DISTINCT specialite) AS nb_specialite FROM soigne S,malade M,docteur D WHERE s.no_malade=M.numero AND S.no_docteur=D.numero GROUP BY M.nom HAVING COUNT(no_docteur)>3; ";
+                    JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
+                    JFreeChart chart=ChartFactory.createBarChart("Nombre de malade étant soigné par plus de trois spécialiste","docteur","Nombre de malade", dataset,PlotOrientation.VERTICAL,false,true ,true);
+                    ChartFrame frame=new ChartFrame("",chart);
+                    frame.setVisible(true);
+                    frame.setSize(600,800);
+                    }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null,e);
+                    }
+                break;
+            case 8:
+                try{
+                    String query="SELECT SV.nom, COUNT(DISTINCT I.numero)/COUNT(DISTINCT H.no_malade) AS rapport FROM service SV, infirmier I, hospitalisation H WHERE I.code_service=SV.code AND I.code_service=H.code_service GROUP BY SV.nom;";
+                    JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
+                    JFreeChart chart=ChartFactory.createBarChart("Rapport Infimier/Malade par service","service","Rapport infirmier/malade", dataset,PlotOrientation.VERTICAL,false,true ,true);
+                    ChartFrame frame=new ChartFrame("",chart);
+                    frame.setVisible(true);
+                    frame.setSize(600,800);
+                    }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null,e);
+                    }
+                break;
+            case 9:
+                try{
+                    String query="SELECT E.numero, E.nom,E.prenom FROM employe E RIGHT JOIN soigne S ON E.numero=S.no_docteur RIGHT JOIN hospitalisation H ON S.no_malade=H.no_malade GROUP BY E.nom;";
+                    JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
+                    JFreeChart chart=ChartFactory.createBarChart("Docteur ayant au moins un malade hospitalisé","service","Rapport infirmier/malade", dataset,PlotOrientation.VERTICAL,false,true ,true);
+                    ChartFrame frame=new ChartFrame("",chart);
+                    frame.setVisible(true);
+                    frame.setSize(600,800);
+                    }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null,e);
+                    }
+                break;
+                
+            }
+    }//GEN-LAST:event_jButton_afficher_graphiqueActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String [] args){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -361,18 +312,9 @@ public class Reporting extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Retour;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton_afficher_graphique;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

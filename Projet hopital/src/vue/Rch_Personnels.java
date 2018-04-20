@@ -26,12 +26,15 @@ public class Rch_Personnels extends javax.swing.JFrame {
         link=l;
     
     }
+<<<<<<< HEAD
+=======
     //les méthodes sont relativement similaire à celles utilisées dans recherches patient
     /**
      * 
      * @param SQL requête
      * @return 
      */
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
         public ArrayList<Docteur> getDocteurList(String SQL)
     {
         ArrayList<Docteur> docteurList=new ArrayList<Docteur>();

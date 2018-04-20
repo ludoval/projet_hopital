@@ -8,8 +8,6 @@ import Controleur.Connexion;
 import Modele.*;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -142,6 +140,7 @@ public class Maj_infirmier extends javax.swing.JFrame {
         jTextField_code_service = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1200, 521));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         jLabel1.setText("Mise à jour des infirmiers");
@@ -225,7 +224,7 @@ public class Maj_infirmier extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Retour)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 338, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addGap(573, 573, 573))
                     .addGroup(layout.createSequentialGroup()
@@ -275,7 +274,7 @@ public class Maj_infirmier extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(67, 67, 67)
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 867, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(172, Short.MAX_VALUE))))
+                        .addContainerGap(176, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,7 +323,7 @@ public class Maj_infirmier extends javax.swing.JFrame {
                             .addComponent(jTextField_Rotation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton_Modifier)
                             .addComponent(jButton_Supprimer)
@@ -363,93 +362,34 @@ public class Maj_infirmier extends javax.swing.JFrame {
         jTextField_Salaire.setText(model.getValueAt(i,7).toString());
     }//GEN-LAST:event_jTable1MouseClicked
     /**
-     * 
-     * @param num id du docteur
-     * @return vrai si le docteur en vraiment un false sinon
-     * @throws SQLException s'il y a une erreur
-     */
-    public boolean InfirmierExiste(String num) throws SQLException{
-        String query="SELECT numero FROM infirmier WHERE numero="+num;
-   
-        link.requetes=link.remplirChampsRequete(query);
-        
-        if(link.requetes.isEmpty())return false;//le doc n'est pas présent dans la bdd
-        else return true;
-    }
-    /**
      * Méthode qui permet d'insérer les données
      * @param evt 
      */
     private void jButton_AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AjouterActionPerformed
-        if(jTextField_Adresse.getText().equals("")||jTextField_Nom.getText().equals("")||jTextField_Numero.getText().equals("")||
-                jTextField_Prenom.getText().equals("")||jTextField_Salaire.getText().equals("")||
-                jTextField_Telephone.getText().equals("")||jTextField_Rotation.getText().equals("")||
-                jTextField_code_service.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"L'un des champs est vide");
-        }else{
-            try {
-                //vérif doc inexistant
-                if(InfirmierExiste(jTextField_Numero.getText())){
-                    JOptionPane.showMessageDialog(null,"Cet infirmier éxiste déjà");
-                }else {
-                    String query1="INSERT INTO infirmier(numero,code_service,rotation,salaire) VALUES ("+jTextField_Numero.getText()+",'"+jTextField_code_service.getText()+"','"+jTextField_Rotation.getText()+"',"+jTextField_Salaire.getText()+")"; 
-                    String query2="INSERT INTO employe(numero,nom,prenom,adresse,tel) VALUES ("+jTextField_Numero.getText()+",'"+jTextField_Nom.getText()+"','"+jTextField_Prenom.getText()+"','"+jTextField_Adresse.getText()+"','"+jTextField_Telephone.getText()+"')";
-                    executerSQLquery(query1,query2,"insérée");
-                    }
-            } catch (SQLException ex) {
-                Logger.getLogger(Maj_PH.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+
+        String query1="INSERT INTO infirmier(numero,code_service,rotation,salaire) VALUES ("+jTextField_Numero.getText()+",'"+jTextField_code_service.getText()+"','"+jTextField_Rotation.getText()+"',"+jTextField_Salaire.getText()+")"; 
+        String query2="INSERT INTO employe(numero,nom,prenom,adresse,tel) VALUES ("+jTextField_Numero.getText()+",'"+jTextField_Nom.getText()+"','"+jTextField_Prenom.getText()+"','"+jTextField_Adresse.getText()+"','"+jTextField_Telephone.getText()+"')";
+        executerSQLquery(query1,query2,"insérée");
     }//GEN-LAST:event_jButton_AjouterActionPerformed
     /**
      * Méthode qui permet de supprimer les donnés
      * @param evt 
      */
     private void jButton_SupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SupprimerActionPerformed
-        if(jTextField_Adresse.getText().equals("")||jTextField_Nom.getText().equals("")||jTextField_Numero.getText().equals("")||
-                jTextField_Prenom.getText().equals("")||jTextField_Salaire.getText().equals("")||
-                jTextField_Telephone.getText().equals("")||jTextField_Rotation.getText().equals("")||
-                jTextField_code_service.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"L'un des champs est vide");
-        }else{
-            try {
-                //vérif doc inexistant
-                if(InfirmierExiste(jTextField_Numero.getText())){
-                    JOptionPane.showMessageDialog(null,"Cet infirmier éxiste déjà");
-                }else {
-                    String query1= "DELETE FROM `infirmier` WHERE `numero` = "+jTextField_Numero.getText();
-                    String query2= "DELETE FROM `employe` WHERE `numero`= "+jTextField_Numero.getText();
-                    executerSQLquery(query1,query2,"effacée");
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Maj_PH.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        
+         String query1= "DELETE FROM `infirmier` WHERE `numero` = "+jTextField_Numero.getText();
+         String query2= "DELETE FROM `employe` WHERE `numero`= "+jTextField_Numero.getText();
+         executerSQLquery(query1,query2,"effacée");
     }//GEN-LAST:event_jButton_SupprimerActionPerformed
     /**
      * Méthode qui permet de modifier les données
      * @param evt 
      */
     private void jButton_ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ModifierActionPerformed
-         if(jTextField_Adresse.getText().equals("")||jTextField_Nom.getText().equals("")||jTextField_Numero.getText().equals("")||
-                jTextField_Prenom.getText().equals("")||jTextField_Salaire.getText().equals("")||
-                jTextField_Telephone.getText().equals("")||jTextField_Rotation.getText().equals("")||
-                jTextField_code_service.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"L'un des champs est vide");
-        }else{
-            try {
-                //vérif doc inexistant
-                if(InfirmierExiste(jTextField_Numero.getText())){
-                    JOptionPane.showMessageDialog(null,"Cet infirmier éxiste déjà");
-                }else {
+        
         String query1="UPDATE infirmier SET `code_service`='"+jTextField_code_service.getText()+"',`rotation`='"+jTextField_Rotation.getText()+"',`salaire`="+jTextField_Salaire.getText()+" WHERE `numero`="+jTextField_Numero.getText();
         String query2="UPDATE employe SET `nom`='"+jTextField_Nom.getText()+"',`prenom`='"+jTextField_Prenom.getText()+"',`adresse`='"+jTextField_Adresse.getText()+"',`tel`='"+jTextField_Telephone.getText()+"' WHERE `numero`="+jTextField_Numero.getText();
         executerSQLquery(query1,query2, "modifié");
-        }
-            } catch (SQLException ex) {
-                Logger.getLogger(Maj_PH.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
     }//GEN-LAST:event_jButton_ModifierActionPerformed
 
     /**

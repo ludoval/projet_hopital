@@ -27,6 +27,10 @@ public class Rch_Patients extends javax.swing.JFrame {
         link=l;
  
     }
+<<<<<<< HEAD
+        public ArrayList<MaladeHosp> getMaladeHospList(String SQL)
+    {
+=======
     /**
      * 
      * @param SQL
@@ -35,10 +39,19 @@ public class Rch_Patients extends javax.swing.JFrame {
         public ArrayList<MaladeHosp> getMaladeHospList(String SQL)
     {
         //declaration des variables
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
         ArrayList<MaladeHosp> maladehospList=new ArrayList<MaladeHosp>();
         String query=SQL;
         Statement st;
         ResultSet rs;
+<<<<<<< HEAD
+        try{
+            st=link.getConn().createStatement();
+            rs = st.executeQuery(query); 
+            MaladeHosp maladehosp;
+            while(rs.next())
+           {
+=======
        //traitement
         try{
             st=link.getConn().createStatement();//crée une requête
@@ -47,20 +60,29 @@ public class Rch_Patients extends javax.swing.JFrame {
             while(rs.next())
            {
                //remplie les différents champs dans l'arraylist =>les attributs d'un patient
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
                maladehosp= new MaladeHosp(rs.getString("numero"),rs.getString("nom"),rs.getString("prenom"),rs.getString("tel"), rs.getString("adresse"),rs.getString("mutuelle"),rs.getString("no_doc"),rs.getString("nom_doc"),rs.getString("prenom_doc"),rs.getString("tel_doc"),rs.getString("specialite"),rs.getString("no_chambre"),rs.getString("service"));
                maladehospList.add(maladehosp);
            }
         }
+<<<<<<< HEAD
+         catch (Exception e) {
+=======
          catch (Exception e) {//en cas de problème affiche l'erreur
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
            e.printStackTrace();
         }
         return maladehospList;
     }
     // Display Data In JTable
+<<<<<<< HEAD
+   
+=======
    /**
     * remplie le tableau
     * @param SQL requête
     */
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
    public void Show_MaladeHosp_In_JTable(String SQL)
    {
        ArrayList<MaladeHosp> list = getMaladeHospList(SQL);
@@ -84,6 +106,10 @@ public class Rch_Patients extends javax.swing.JFrame {
            model.addRow(row);
        }
     }
+<<<<<<< HEAD
+    public ArrayList<Malade> getMaladeList(String SQL)
+    {
+=======
    /**
     * 
     * @param SQL requête
@@ -92,11 +118,15 @@ public class Rch_Patients extends javax.swing.JFrame {
     public ArrayList<Malade> getMaladeList(String SQL)
     {
         //déclaration des variable
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
         ArrayList<Malade> maladeList=new ArrayList<Malade>();
         String query=SQL;
         Statement st;
         ResultSet rs;
+<<<<<<< HEAD
+=======
         //traitement
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
         try{
             st=link.getConn().createStatement();
             rs = st.executeQuery(query); 
@@ -108,16 +138,24 @@ public class Rch_Patients extends javax.swing.JFrame {
            
         }
         }
+<<<<<<< HEAD
+         catch (Exception e) {
+=======
          catch (Exception e) {//en cas de problème
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
            e.printStackTrace();
         }
         return maladeList;
     }
     // Display Data In JTable
+<<<<<<< HEAD
+   
+=======
    /**
     * même chose mais pour un malde non hospitalisé
     * @param SQL requête
     */
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
    public void Show_Malade_In_JTable(String SQL)
    {
        ArrayList<Malade> list = getMaladeList(SQL);
@@ -303,7 +341,10 @@ public class Rch_Patients extends javax.swing.JFrame {
         C=Categorie.getSelectedIndex();
         int No_A;
         String SQL = null;
+<<<<<<< HEAD
+=======
         //analyse de la 1ere combobox
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
         switch(C){
     
                  case 0: 
@@ -311,6 +352,50 @@ public class Rch_Patients extends javax.swing.JFrame {
                     //analyse de la combo box
                      switch(No_A){
                     case 0:
+<<<<<<< HEAD
+                        SQL=SQL_P_H+" GROUP BY M.numero;";
+                        break;
+                    case 1:
+                        SQL=SQL_P_H+"AND M.numero ="+Texte_recherche.getText()+" GROUP BY M.numero;";
+                        break;
+                    case 2:
+                        SQL=SQL_P_H+"AND M.nom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        break;
+                    case 3:
+                        SQL=SQL_P_H+"AND M.prenom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        break;
+                    case 4:
+                        SQL=SQL_P_H+"AND M.adresse like '%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        break;
+                    case 5:
+                        SQL=SQL_P_H+"AND M.tel like '%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        break;
+                    case 6:
+                        SQL=SQL_P_H+"AND M.mutuelle like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        break;
+                    case 7:
+                        SQL=SQL_P_H+"AND E.numero ="+Texte_recherche.getText()+" GROUP BY M.numero;";
+                        break;
+                    case 8:
+                        SQL=SQL_P_H+"AND E.nom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        break;
+                    case 9:
+                        SQL=SQL_P_H+"AND E.prenom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        break;
+                    case 10:
+                        SQL=SQL_P_H+"AND E.tel like '%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        break;
+                    case 11:
+                        SQL=SQL_P_H+"AND D.specialite like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        break;
+                    case 12:
+                        SQL=SQL_P_H+"AND H.no_chambre ="+Texte_recherche.getText()+" GROUP BY M.numero;";
+                        break;
+                    case 13:
+                        SQL=SQL_P_H+"AND SV.nom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
+                        break;
+                    }
+=======
                         SQL=SQL_P_H+" GROUP BY M.numero;";//par défaut choix=aucun
                         break;
                     case 1:
@@ -354,6 +439,7 @@ public class Rch_Patients extends javax.swing.JFrame {
                         break;
                     }
                     //reshape la table
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
                     jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                
@@ -372,7 +458,11 @@ public class Rch_Patients extends javax.swing.JFrame {
                         SQL=SQL_P+" GROUP BY M.numero;";
                         break;
                     case 1:
+<<<<<<< HEAD
+                        SQL=SQL_P+"AND M.numero = "+Texte_recherche.getText()+" GROUP BY M.numero;";
+=======
                         SQL=SQL_P+"AND M.numero = "+Texte_recherche.getText()+" GROUP BY M.numero;";//rch 
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
                         break;
                     case 2:
                         SQL=SQL_P+"AND M.nom like "+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
@@ -405,7 +495,10 @@ public class Rch_Patients extends javax.swing.JFrame {
                         SQL=SQL_P+"AND D.specialite like"+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY M.numero;";
                         break;
                 }
+<<<<<<< HEAD
+=======
                 //reshape la table
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
                 jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 
@@ -414,7 +507,11 @@ public class Rch_Patients extends javax.swing.JFrame {
                 "numero", "nom", "prenom", "adresse", "tel", "mutuelle", "no_doc", "nom_doc", "prenom_doc", "tel_doc", "specialite"
             }
         ));
+<<<<<<< HEAD
+                Show_Malade_In_JTable(SQL);
+=======
                 Show_Malade_In_JTable(SQL);//affiche
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
             }
         Texte_recherche.setText("");
     }//GEN-LAST:event_RechercheActionPerformed

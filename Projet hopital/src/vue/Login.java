@@ -8,9 +8,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.*;
 
-public class Login extends JFrame {
+public class Login extends javax.swing.JFrame {
     
     private Connexion maconnexion;
     private javax.swing.JButton Connexion;

@@ -27,10 +27,14 @@ public class Maj_PH extends javax.swing.JFrame {
         link=l;
         AffichePatientH();
     }
+<<<<<<< HEAD
+    
+=======
     /**
      * crée uneliste de malade hospitalisés
      * @return cette même liste
      */
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
     public ArrayList<MaladeHosp> getMaladeList(){
         ArrayList<MaladeHosp> list=new ArrayList<>();
         String query="SELECT DISTINCT M.numero, M.nom, M.prenom,M.adresse, M.tel, M.mutuelle, H.no_chambre as chambre, SV.code as nom_serv,E.numero as num_doc, E.nom as nom_doc, E.prenom as prenom_doc, E.tel as tel_doc, D.specialite FROM malade M,hospitalisation H,service SV, soigne S, docteur D, employe E WHERE M.numero=H.no_malade AND H.no_malade=S.no_malade AND S.no_docteur=D.numero AND D.numero=E.numero AND H.code_service=SV.code ORDER BY `M`.`numero` ASC";
@@ -49,9 +53,13 @@ public class Maj_PH extends javax.swing.JFrame {
         }
         return list;
     }
+<<<<<<< HEAD
+    
+=======
     /**
      * affiche un patient hospitalisé
      */
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
     public void AffichePatientH(){
         
         ArrayList<MaladeHosp> list = getMaladeList();
@@ -92,24 +100,30 @@ public class Maj_PH extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         idpat = new javax.swing.JTextField();
         nom = new javax.swing.JTextField();
         prenom = new javax.swing.JTextField();
         adresse = new javax.swing.JTextField();
         mutuelle = new javax.swing.JTextField();
+        num_doc = new javax.swing.JTextField();
+        nom_doc = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         Supprimer = new javax.swing.JButton();
         Modifier = new javax.swing.JButton();
         Ajouter = new javax.swing.JButton();
+        prenom_doc = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         num_chambre = new javax.swing.JTextField();
         nom_serv = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         tel = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        num_doc = new javax.swing.JTextField();
+        spe = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,6 +146,8 @@ public class Maj_PH extends javax.swing.JFrame {
         jLabel5.setText("Adresse");
 
         jLabel6.setText("Mutuelle");
+
+        jLabel7.setText("Id docteur");
 
         jLabel8.setText("n°chambre");
 
@@ -184,9 +200,13 @@ public class Maj_PH extends javax.swing.JFrame {
 
         jLabel9.setText("Service");
 
+        jLabel10.setText("Nom doc");
+
+        jLabel11.setText("Prenom doc");
+
         jLabel12.setText("Téléphone");
 
-        jLabel7.setText("Id Docteur");
+        jLabel13.setText("Spécialité");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,29 +229,35 @@ public class Maj_PH extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
                                     .addComponent(jLabel4)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jLabel6))
+                                    .addComponent(jLabel7)
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel2))
                                 .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel3))
-                        .addGap(22, 22, 22)
+                            .addComponent(jLabel13))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(nom, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                             .addComponent(adresse, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(mutuelle, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tel, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(num_doc, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nom_doc, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(prenom_doc, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spe, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(num_chambre, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nom_serv, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(prenom, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idpat)
-                            .addComponent(num_doc, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(50, 50, 50)
-                        .addComponent(jScrollPane1)))
+                            .addComponent(idpat))
+                        .addGap(49, 49, 49)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)))
                 .addGap(79, 79, 79))
         );
         layout.setVerticalGroup(
@@ -242,8 +268,7 @@ public class Maj_PH extends javax.swing.JFrame {
                     .addComponent(Retour)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -270,8 +295,20 @@ public class Maj_PH extends javax.swing.JFrame {
                             .addComponent(jLabel12))
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(num_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(num_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nom_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(prenom_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(num_chambre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,7 +316,8 @@ public class Maj_PH extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nom_serv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))))
+                            .addComponent(jLabel9)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Supprimer)
@@ -298,7 +336,11 @@ public class Maj_PH extends javax.swing.JFrame {
     }//GEN-LAST:event_RetourActionPerformed
     /**
      * 
+<<<<<<< HEAD
+     * @param num
+=======
      * @param num id du patient
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
      * @return si le malade existe dans la bdd
      * @throws SQLException pour la forme
      */
@@ -310,12 +352,16 @@ public class Maj_PH extends javax.swing.JFrame {
         if(link.requetes.isEmpty())return false;//le malade n'est pas présent dans la bdd
         else return true;
     }
+<<<<<<< HEAD
+    
+=======
     /**
      * 
      * @param num id du docteur
      * @return vrai si le docteur en vraiment un false sinon
      * @throws SQLException s'il y a une erreur
      */
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
     public boolean DocExiste(String num) throws SQLException{
         String query="SELECT numero FROM docteur WHERE numero="+num;
    
@@ -324,10 +370,13 @@ public class Maj_PH extends javax.swing.JFrame {
         if(link.requetes.isEmpty())return false;//le doc n'est pas présent dans la bdd
         else return true;
     }
+<<<<<<< HEAD
+=======
     /**
      * ajoute le malade dans hospitalisation, soigne (et malade au besoin)
      * @param evt 
      */
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
     private void AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjouterActionPerformed
         String query1,query2,query3;
         ArrayList<Object> lit;
@@ -353,10 +402,14 @@ public class Maj_PH extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_AjouterActionPerformed
+<<<<<<< HEAD
+
+=======
     /**
      * modifie les tables hospitalisation et malade 
      * @param evt "modifier" pressed
      */
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
     private void ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifierActionPerformed
        //vérifier les champs 
         String query1,query2,query3;
@@ -384,10 +437,14 @@ public class Maj_PH extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_ModifierActionPerformed
+<<<<<<< HEAD
+
+=======
     /**
      * supression dans malade, hospitalisation et soigne
      * @param evt "supprimer" pressed
      */
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
     private void SupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SupprimerActionPerformed
         //vérifier les champs 
         String query1,query2,query3,query;
@@ -422,10 +479,14 @@ public class Maj_PH extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_SupprimerActionPerformed
+<<<<<<< HEAD
+
+=======
     /**
-     * récupère les infos de la JTable pour les mettre dans les champs de saisie
+     * récupère les infos de la JTable
      * @param evt clique sur le tableau
      */
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         int i=table.getSelectedRow();
         TableModel model=table.getModel();
@@ -436,14 +497,21 @@ public class Maj_PH extends javax.swing.JFrame {
         tel.setText(model.getValueAt(i,4).toString());
         mutuelle.setText(model.getValueAt(i,5).toString());
         num_doc.setText(model.getValueAt(i,6).toString());
+        nom_doc.setText(model.getValueAt(i,7).toString());
+        prenom_doc.setText(model.getValueAt(i,8).toString());
+        spe.setText(model.getValueAt(i,10).toString());
         num_chambre.setText(model.getValueAt(i,11).toString());
         nom_serv.setText(model.getValueAt(i,12).toString());
     }//GEN-LAST:event_tableMouseClicked
+<<<<<<< HEAD
+    //vérification de la modif & éxecution
+=======
     /**
      * exectue et vérifie le bon fonctionnement d'une requête
      * @param query requête
      * @param message information sur le déroulement de la requête
      */
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
     public void executerSQLquery(String query,String message){
        Statement st;
        try{
@@ -462,12 +530,15 @@ public class Maj_PH extends javax.swing.JFrame {
            ex.printStackTrace();
        }
     }
+<<<<<<< HEAD
+=======
     /**
      * même chose mais pour deux requêtes
      * @param query1
      * @param query2
      * @param message 
      */
+>>>>>>> 84b2909bae11a2bbe0c1c9adcc12cb26a231c7b1
     public void executerSQLquery(String query1,String query2,String message){
        Statement st;
        try{
@@ -529,7 +600,10 @@ public class Maj_PH extends javax.swing.JFrame {
     private javax.swing.JTextField adresse;
     private javax.swing.JTextField idpat;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -541,10 +615,13 @@ public class Maj_PH extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField mutuelle;
     private javax.swing.JTextField nom;
+    private javax.swing.JTextField nom_doc;
     private javax.swing.JTextField nom_serv;
     private javax.swing.JTextField num_chambre;
     private javax.swing.JTextField num_doc;
     private javax.swing.JTextField prenom;
+    private javax.swing.JTextField prenom_doc;
+    private javax.swing.JTextField spe;
     private javax.swing.JTable table;
     private javax.swing.JTextField tel;
     // End of variables declaration//GEN-END:variables

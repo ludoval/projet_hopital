@@ -292,14 +292,6 @@ public class Maj_docteur extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public boolean DocteurExiste(String num) throws SQLException{
-        String query="SELECT numero FROM docteur WHERE numero="+num;
-   
-        link.requetes=link.remplirChampsRequete(query);
-        
-        if(link.requetes.isEmpty())return false;//le docteur n'est pas présent dans la bdd
-        else return true;
-    }
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         

@@ -20,7 +20,7 @@ import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.jdbc.JDBCCategoryDataset;
 /**
  *
- * @author axel9
+ * @author Mathieu
  */
 public class Reporting extends javax.swing.JFrame {
     private static Connexion link;
@@ -221,14 +221,21 @@ public class Reporting extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Méthode permettant d'afficher un histogramme montrant les salaires en fonction de l'effectif
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try{
+            //On stocke la requête permettant d'afficher la répartition des salaires
             String query="SELECT nom,COUNT(numero) AS effectif FROM infirmier I, service SV WHERE SV.code=I.code_service GROUP BY nom;";
+            //On instancie un objet de JDBCCategoryDataset qui nous permet de récupérer l'ensemble des données générées par la requête en paramètre
             JDBCCategoryDataset dataset=new JDBCCategoryDataset(link.getConn(),query);
+            //Méthode de JFreeChart qui permet de créer un histogramme
             JFreeChart chart=ChartFactory.createBarChart("Répartition des infirmiers par service","service","infirmiers", dataset,PlotOrientation.VERTICAL,false,true ,true);
-            BarRenderer renderer=null;
-            CategoryPlot plot=null;
+            //BarRenderer renderer=null;
+            //CategoryPlot plot=null;
+            //On instancie un objet qui permet d'initialiser la fenêtre qui va afficher l'histogramme
             ChartFrame frame=new ChartFrame("",chart);
             frame.setVisible(true);
             frame.setSize(600,800);
@@ -238,7 +245,10 @@ public class Reporting extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,e);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    /*
+    On répète les mêmes instructions pour implémenter les autres méthodes ActionPerformed sauf que l'on  stocke
+    une requête différente en fonction des données que l'on veut générer dans les autres graphiques.
+    */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try{
             String query="SELECT SV.nom,COUNT(H.no_malade) AS effectif FROM service SV,hospitalisation H WHERE H.code_service=SV.code GROUP BY SV.nom ORDER BY COUNT(H.no_malade);";

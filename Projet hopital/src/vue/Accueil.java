@@ -31,8 +31,9 @@ public class Accueil extends javax.swing.JFrame {
 
         Recherche = new javax.swing.JButton();
         Mise_a_jour = new javax.swing.JButton();
-        Reporting = new javax.swing.JButton();
+        Information = new javax.swing.JButton();
         Acceuil = new javax.swing.JLabel();
+        Reporting1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,18 +57,28 @@ public class Accueil extends javax.swing.JFrame {
             }
         });
 
-        Reporting.setBackground(new java.awt.Color(0, 255, 204));
-        Reporting.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        Reporting.setForeground(new java.awt.Color(0, 153, 204));
-        Reporting.setText("Reporting");
-        Reporting.addActionListener(new java.awt.event.ActionListener() {
+        Information.setBackground(new java.awt.Color(0, 255, 204));
+        Information.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        Information.setForeground(new java.awt.Color(0, 153, 204));
+        Information.setText("Information");
+        Information.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReportingActionPerformed(evt);
+                InformationActionPerformed(evt);
             }
         });
 
         Acceuil.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        Acceuil.setText("Accueil");
+        Acceuil.setText("Acceuil");
+
+        Reporting1.setBackground(new java.awt.Color(0, 255, 204));
+        Reporting1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        Reporting1.setForeground(new java.awt.Color(0, 153, 204));
+        Reporting1.setText("Reporting");
+        Reporting1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Reporting1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,11 +90,13 @@ public class Accueil extends javax.swing.JFrame {
                 .addContainerGap(458, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Reporting, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(Recherche, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Mise_a_jour, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Reporting1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Information, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(Recherche, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Mise_a_jour, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -91,13 +104,15 @@ public class Accueil extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(Acceuil)
-                .addGap(63, 63, 63)
+                .addGap(30, 30, 30)
                 .addComponent(Recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(38, 38, 38)
                 .addComponent(Mise_a_jour, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(Reporting, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(Reporting1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(Information, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
         );
 
         pack();
@@ -115,11 +130,15 @@ public class Accueil extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_Mise_a_jourActionPerformed
 
-    private void ReportingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportingActionPerformed
-        Reporting Page_Reporting= new Reporting(link);
-        Page_Reporting.setVisible(true);
+    private void InformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformationActionPerformed
+        Information Page_Information= new Information(link);
+        Page_Information.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_ReportingActionPerformed
+    }//GEN-LAST:event_InformationActionPerformed
+
+    private void Reporting1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Reporting1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Reporting1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,8 +177,9 @@ public class Accueil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Acceuil;
+    private javax.swing.JButton Information;
     private javax.swing.JButton Mise_a_jour;
     private javax.swing.JButton Recherche;
-    private javax.swing.JButton Reporting;
+    private javax.swing.JButton Reporting1;
     // End of variables declaration//GEN-END:variables
 }

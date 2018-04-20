@@ -131,10 +131,7 @@ public class Maj_P extends javax.swing.JFrame {
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "numero", "nom", "prenom", "adresse", "tel", "mutuelle", "num_doc", "nom_doc", "prenom_doc", "tel_doc", "specialite"

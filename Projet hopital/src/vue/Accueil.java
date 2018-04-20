@@ -67,7 +67,7 @@ public class Accueil extends javax.swing.JFrame {
         });
 
         Acceuil.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        Acceuil.setText("Acceuil");
+        Acceuil.setText("Accueil");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

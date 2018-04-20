@@ -5,6 +5,12 @@
  */
 package vue;
 import Controleur.Connexion;
+import Modele.Docteur;
+import Modele.Infirmier;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import vue.Recherche;
 /**
  *
@@ -18,8 +24,92 @@ public class Rch_Personnels extends javax.swing.JFrame {
     public Rch_Personnels(Connexion l){
         initComponents();
         link=l;
+    
     }
-
+        public ArrayList<Docteur> getDocteurList(String SQL)
+    {
+        ArrayList<Docteur> docteurList=new ArrayList<Docteur>();
+        String query=SQL;
+        Statement st;
+        ResultSet rs;
+        try{
+            st=link.getConn().createStatement();
+            rs = st.executeQuery(query); 
+            Docteur docteur;
+            while(rs.next())
+           {
+               docteur= new Docteur(rs.getString("numero"),rs.getString("nom")
+                       ,rs.getString("prenom"),rs.getString("adresse"),rs.getString("tel"),rs.getString("specialite"));
+               docteurList.add(docteur);
+           }
+        }
+         catch (Exception e) {
+           e.printStackTrace();
+        }
+        return docteurList;
+    }
+    // Display Data In JTable
+   
+   public void Show_Docteur_In_JTable(String SQL)
+   {
+       ArrayList<Docteur> list = getDocteurList(SQL);
+       DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+       Object[] row = new Object[6];
+       for(int i = 0; i < list.size(); i++)
+       {
+           row[0] = list.get(i).getnumero();
+           row[1] = list.get(i).getnom();
+           row[2] = list.get(i).getprenom();
+           row[3] = list.get(i).getadresse();
+           row[4] = list.get(i).gettel();
+           row[5] = list.get(i).getspecialite();
+           
+           model.addRow(row);
+       }
+    }
+    //Récupérer une ArrayList d'infirmiers venant de la base de donnée
+    public ArrayList<Infirmier> getInfirmierList(String SQL)
+    {
+        ArrayList<Infirmier> infirmierList=new ArrayList<Infirmier>();
+        String query=SQL;
+        Statement st;
+        ResultSet rs;
+        try{
+            st=link.getConn().createStatement();
+            rs = st.executeQuery(query); 
+            Infirmier infirmier;
+            while(rs.next())
+           {
+               infirmier= new Infirmier(rs.getString("numero"),rs.getString("nom"),rs.getString("prenom"),rs.getString("adresse"),rs.getString("tel"),rs.getString("nom_service"),rs.getString("rotation"),rs.getDouble("salaire"));
+               infirmierList.add(infirmier);
+           }
+        }
+         catch (Exception e) {
+           e.printStackTrace();
+        }
+        return infirmierList;
+    }
+    // Display Data In JTable
+   
+   public void Show_Infirmier_In_JTable(String SQL)
+   {
+       ArrayList<Infirmier> list = getInfirmierList(SQL);
+       DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+       Object[] row = new Object[8];
+       for(int i = 0; i < list.size(); i++)
+       {
+           row[0] = list.get(i).getnumero();
+           row[1] = list.get(i).getnom();
+           row[2] = list.get(i).getprenom();
+           row[3] = list.get(i).getadresse();
+           row[4] = list.get(i).gettel();
+           row[5] = list.get(i).getcode_service();
+           row[6] = list.get(i).getSalaire();
+           row[7] = list.get(i).getRotation();
+           
+           model.addRow(row);
+       }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,13 +160,15 @@ public class Rch_Personnels extends javax.swing.JFrame {
         });
 
         Recherche.setText("Recherche");
+        Recherche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RechercheActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "numero", "nom", "prenom", "adresse", "tel"
@@ -118,9 +210,9 @@ public class Rch_Personnels extends javax.swing.JFrame {
                     .addComponent(Categorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Attribut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Recherche))
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(112, 112, 112))
         );
 
         pack();
@@ -135,14 +227,11 @@ public class Rch_Personnels extends javax.swing.JFrame {
     private void CategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategorieActionPerformed
         if(Categorie.getSelectedIndex()==0){
             if(Attribut.getItemCount()>6){
-               Attribut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "aucun", "numero", "prenom", "adresse", "tel" }));
+               Attribut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "aucun", "numero","nom", "prenom", "adresse", "tel" }));
                Attribut.addItem("specialite");
                jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                
             },
             new String [] {
                 "numero", "nom", "prenom", "adresse", "tel","specialite"
@@ -153,10 +242,7 @@ public class Rch_Personnels extends javax.swing.JFrame {
                  Attribut.addItem("specialite");
                  jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                
             },
             new String [] {
                 "numero", "nom", "prenom", "adresse", "tel","specialite"
@@ -166,16 +252,13 @@ public class Rch_Personnels extends javax.swing.JFrame {
         }
         if(Categorie.getSelectedIndex()==1){
             if(Attribut.getItemCount()>6){
-               Attribut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "aucun", "numero", "prenom", "adresse", "tel" }));
+               Attribut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "aucun","numero", "nom","prenom", "adresse", "tel" }));
                Attribut.addItem("nom_service");
                Attribut.addItem("salaire");
                Attribut.addItem("rotation");
                jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null,null,null},
-                {null, null, null, null, null, null,null,null},
-                {null, null, null, null, null, null,null,null},
-                {null, null, null, null, null, null,null,null}
+                
             },
             new String [] {
                 "numero", "nom", "prenom", "adresse", "tel", "nom_service","salaire","rotation"
@@ -188,10 +271,7 @@ public class Rch_Personnels extends javax.swing.JFrame {
                  Attribut.addItem("rotation");
                  jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null,null,null},
-                {null, null, null, null, null, null,null,null},
-                {null, null, null, null, null, null,null,null},
-                {null, null, null, null, null, null,null,null}
+                
             },
             new String [] {
                 "numero", "nom", "prenom", "adresse", "tel", "nom_service","salaire","rotation"
@@ -208,6 +288,100 @@ public class Rch_Personnels extends javax.swing.JFrame {
     private void AttributActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AttributActionPerformed
         
     }//GEN-LAST:event_AttributActionPerformed
+
+    private void RechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechercheActionPerformed
+
+        String SQL_D="SELECT DISTINCT E.numero, E.nom ,E.prenom ,E.adresse,E.tel,D.specialite FROM employe E,service SV,docteur D WHERE E.numero=D.numero ";
+        String SQL_I="SELECT DISTINCT E.numero, E.nom,E.prenom,E.adresse,E.tel,SV.nom as nom_service,I.salaire,I.rotation FROM employe E,service SV, infirmier I WHERE E.numero=I.numero AND I.code_service=SV.code ";
+        String SQL = null;
+        int C;
+        int No_A;
+        C=Categorie.getSelectedIndex();
+
+        switch(C){
+    
+         case 0: 
+            
+            No_A=Attribut.getSelectedIndex();
+            switch(No_A){
+                case 0:
+                    SQL=SQL_D+"GROUP BY E.numero;";
+                    break;
+                case 1:
+                    SQL=SQL_D+"AND E.numero ="+Texte_recherche.getText()+" GROUP BY E.numero;";
+                    break;
+                case 2:
+                    SQL=SQL_D+"AND E.nom like"+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY E.numero;";
+                    break;
+                case 3:
+                    SQL=SQL_D+"AND E.prenom like"+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY E.numero;";
+                    break;
+                case 4:
+                    SQL=SQL_D+"AND E.adresse like '%"+Texte_recherche.getText()+"%'"+" GROUP BY E.numero;";
+                    break;
+                case 5:
+                    SQL=SQL_D+"AND E.tel like '%"+Texte_recherche.getText()+"%'"+" GROUP BY E.numero;";
+                    break;
+                case 6:
+                    SQL=SQL_D+"AND D.specialite like"+"'%"+Texte_recherche.getText()+"%'"+" GROUP BY E.numero;";
+                    break;
+                }
+            jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                
+            },
+            new String [] {
+                "numero", "nom", "prenom", "adresse", "tel","specialite"
+            }
+        ));
+            Show_Docteur_In_JTable(SQL); 
+            break;
+        case 1: 
+           
+            String A;
+            No_A=Attribut.getSelectedIndex();
+            switch(No_A){
+                case 0:
+                    SQL=SQL_I;
+                    break;
+                case 1:
+                    SQL=SQL_I+"AND E.numero ="+Texte_recherche.getText()+";";
+                    break;
+                case 2:
+                    SQL=SQL_I+"AND E.nom like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                    break;
+                case 3:
+                    SQL=SQL_I+"AND E.prenom like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                    break;
+                case 4:
+                    SQL=SQL_I+"AND E.adresse like '%"+Texte_recherche.getText()+"%'"+";";
+                    break;
+                case 5:
+                    SQL=SQL_I+"AND E.tel like '%"+Texte_recherche.getText()+"%'"+";";
+                    break;
+                case 6:
+                    SQL=SQL_I+"AND SV.nom like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                    break;
+                case 7:
+                    SQL=SQL_I+"AND salaire ="+Texte_recherche.getText()+";";
+                    break;
+                case 8:
+                    SQL=SQL_I+"AND rotation like"+"'%"+Texte_recherche.getText()+"%'"+";";
+                    break;
+                }
+            jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                
+            },
+            new String [] {
+                "numero", "nom", "prenom", "adresse", "tel", "nom_service","salaire","rotation"
+            }
+        ));
+        Show_Infirmier_In_JTable(SQL);
+            break;
+            }
+        Texte_recherche.setText("");
+    }//GEN-LAST:event_RechercheActionPerformed
 
     /**
      * @param args the command line arguments

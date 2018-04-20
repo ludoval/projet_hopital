@@ -9,7 +9,7 @@ package Modele;
  *
  * @author ludovic
  */
-public abstract class Employe{
+public class Employe{
     //attribut
     protected String numero;
     protected String nom;

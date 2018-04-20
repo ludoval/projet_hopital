@@ -2,13 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/C:/Users/Mathieu/projet_hopital/Projet%20hopital/src/vue/Reporting.java</file>
-            <file>file:/C:/Users/Mathieu/projet_hopital/Projet%20hopital/src/vue/Maj_infirmier.java</file>
+            <file>file:/C:/Users/ludovic/Desktop/Projet%20hopital/src/vue/Maj_infirmier.java</file>
+            <file>file:/C:/Users/ludovic/Desktop/Projet%20hopital/src/Modele/Malade.java</file>
+            <file>file:/C:/Users/ludovic/Desktop/Projet%20hopital/src/vue/Maj_P.java</file>
+            <file>file:/C:/Users/ludovic/Desktop/Projet%20hopital/src/vue/Maj_PH.java</file>
+            <file>file:/C:/Users/ludovic/Desktop/Projet%20hopital/src/Modele/MaladeHosp.java</file>
         </group>
->>>>>>> deb800516281c460cefcf7011d943df456550de5
     </open-files>
 </project-private>

@@ -97,7 +97,7 @@ public class Mise_A_Jour extends javax.swing.JFrame {
     }//GEN-LAST:event_RetourActionPerformed
 
     private void MAJ_patientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MAJ_patientActionPerformed
-        Rch_Patients P=new Rch_Patients(link);
+        Maj_Patient P=new Maj_Patient(link);
         P.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_MAJ_patientActionPerformed

@@ -123,6 +123,7 @@ public class Login extends javax.swing.JFrame {
         // tester cas de la commande evenementielle
         if (source == Connexion) {
             ArrayList<String> liste;
+           
             //String Password = new String(passwdECETexte.getPassword());
             String Password = new String(Password_Text.getPassword());
             try {
